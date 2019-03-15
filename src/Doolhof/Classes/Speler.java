@@ -1,5 +1,8 @@
 package Doolhof.Classes;
 
+import java.awt.*;
+import javax.swing.*;
+
 /**
  * Created by sjoer on 13-3-2019.
  */
@@ -8,9 +11,21 @@ public class Speler {
     private int positieY;
     private String inventory;
 
+    private ImageIcon foto = new ImageIcon(("vlak.jpg")); //nieuwe instance
+
     public Speler(int positieX, int positieY) {
         this.positieX = positieX;
         this.positieY = positieY;
+    }
+
+    public Speler() { //nieuwe Constructor
+
+    }
+
+    public void createSpeler(JPanel speler) { //nieuwe methode(NOG NIET GOED)
+        speler.remove(1);
+        JLabel label = new JLabel(foto);
+        speler.add(label);
     }
 
     public int getPositieX() {
@@ -42,6 +57,10 @@ public class Speler {
     }
 
     public void beweeg(){
+
+    }
+
+    public void checkMovement() {
 
     }
 }

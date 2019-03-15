@@ -1,6 +1,8 @@
 package Doolhof.Classes;
 
+import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by sjoer on 13-3-2019.
@@ -12,7 +14,9 @@ public class Vlak {
     public Vlak(Point point, String naam) {
         this.point = point;
         this.naam = naam;
+    }
 
+    public Vlak () { // nieuwe Constructor
     }
 
     public Point getPoint() {
@@ -26,4 +30,7 @@ public class Vlak {
     public String getNaam() {
         return naam;
     }
+
+    public String setNaam(String name) { return naam = name; } //nieuwe methode
+
 }

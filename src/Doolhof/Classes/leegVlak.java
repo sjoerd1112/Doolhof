@@ -1,5 +1,6 @@
 package Doolhof.Classes;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -7,8 +8,10 @@ import java.awt.*;
  */
 public class leegVlak extends Vlak{
 
+    public leegVlak(Point point, String naam) { super(point, naam);
+    }
 
-    public leegVlak(Point point, String naam) {
-        super(point, naam);
+    public leegVlak() { //nieuwe Constructor
+
     }
 }
