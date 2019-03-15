@@ -11,8 +11,6 @@ public class Speler {
     private int positieY;
     private String inventory;
 
-    private ImageIcon foto = new ImageIcon(("vlak.jpg")); //nieuwe instance
-
     public Speler(int positieX, int positieY) {
         this.positieX = positieX;
         this.positieY = positieY;
@@ -24,8 +22,13 @@ public class Speler {
 
     public void createSpeler(JPanel speler) { //nieuwe methode(NOG NIET GOED)
         Speelveld speelveld = new Speelveld();
-        Speelveld.setFoto(new ImageIcon(("vlak.jpg")));
-        //speler.add(label);
+        speelveld.setFoto(new ImageIcon(("speler neutraal.jpg")));
+        JLabel label = new JLabel(speelveld.getFoto());
+
+        speelveld.addJLabel(0, label);
+        speler.add(label);
+        Point point = new Point(1, 1);
+        Vlak vlak = new Vlak(point, "Speler");
     }
 
     public int getPositieX() {

@@ -33,24 +33,28 @@ public class Speelveld {
         return foto;
     }
 
-    public static JLabel getJLabel(int index) { //nieuwe methode
-        return label.get(index);
+    public static void addJLabel(int index, JLabel jlabel) { //nieuwe methode
+        label.add(index, jlabel);
     }
 
     public void startDoolHof(JPanel panel, int level) { //nieuwe methode
         Speler speler = new Speler();
-        //speler.createSpeler(panel);
+        speler.createSpeler(panel);
 
         setFoto(new ImageIcon(("vlak.jpg")));
-        for (int i = 0; i < 100; i++) {
+        for (int i = 1; i < 100; i++) {
                 label.add(i, new JLabel(getFoto()));
                 panel.add(label.get(i));
         }
+        Vlak vlak = new Vlak();
         for (int y = 1; y <= 10; y++) {
             for (int x = 1; x <= 10; x++) {
+                if (vlak.getNaam() == "Speler") {
+                    System.out.println("Found..");
+                    continue;
+                }
                 Point point = new Point(x, y);
-                System.out.println("Index: " + posities.size());
-                Vlak vlak = new Vlak(point, "Leegvlak");
+                vlak = new Vlak(point, "Leegvlak");
                 vlakken.add(vlak);
                 posities.add(posities.size(), point);
                 System.out.println("Location: " + point.getLocation());
