@@ -23,9 +23,9 @@ public class Speler {
     }
 
     public void createSpeler(JPanel speler) { //nieuwe methode(NOG NIET GOED)
-        speler.remove(1);
-        JLabel label = new JLabel(foto);
-        speler.add(label);
+        Speelveld speelveld = new Speelveld();
+        Speelveld.setFoto(new ImageIcon(("vlak.jpg")));
+        //speler.add(label);
     }
 
     public int getPositieX() {

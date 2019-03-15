@@ -13,18 +13,41 @@ public class Speelveld {
     private static ArrayList<Point> posities = new ArrayList<>(100);
     private static ArrayList<Vlak> vlakken = new ArrayList<>(100);
 
-    private ImageIcon foto = new ImageIcon(("vlak.jpg"));
+    private static ArrayList<JLabel> label = new ArrayList<>(100); //nieuwe instance
+
+    private static ImageIcon foto; //nieuwe instance
+
+    public Speelveld() { //nieuwe constructor
+
+    }
 
     public void startOpnieuw(int level){
 
     }
 
+    public static ImageIcon setFoto(ImageIcon picture) { //nieuwe methode
+        return foto = picture;
+    }
+
+    public static ImageIcon getFoto() { //nieuwe methode
+        return foto;
+    }
+
+    public static JLabel getJLabel(int index) { //nieuwe methode
+        return label.get(index);
+    }
+
     public void startDoolHof(JPanel panel, int level) { //nieuwe methode
-        JLabel label;
+        Speler speler = new Speler();
+        //speler.createSpeler(panel);
+
+        setFoto(new ImageIcon(("vlak.jpg")));
+        for (int i = 0; i < 100; i++) {
+                label.add(i, new JLabel(getFoto()));
+                panel.add(label.get(i));
+        }
         for (int y = 1; y <= 10; y++) {
             for (int x = 1; x <= 10; x++) {
-                label = new JLabel(foto);
-                panel.add(label);
                 Point point = new Point(x, y);
                 System.out.println("Index: " + posities.size());
                 Vlak vlak = new Vlak(point, "Leegvlak");
@@ -39,7 +62,7 @@ public class Speelveld {
 
     public static void main (String[] args) { //nieuwe methode
         JFrame frame = new JFrame("Doolhof");
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new GridLayout(10, 10));
         setup(panel);
 
         frame.add(panel);
@@ -50,11 +73,8 @@ public class Speelveld {
 
     public static void setup(JPanel panel) { //nieuwe methode
         Speelveld doolhof= new Speelveld();
-        Speler speler = new Speler();
 
-        panel.setLayout(new GridLayout(10, 10));
         doolhof.startDoolHof(panel, 1);
-        speler.createSpeler(panel);
     }
 
     /*public static void setup(){
