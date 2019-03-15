@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class Speelveld {
     private int level;
 
-    private static ArrayList<Point> posities = new ArrayList<>(100);
     private static ArrayList<Vlak> vlakken = new ArrayList<>(100);
 
     private static ArrayList<JLabel> label = new ArrayList<>(100); //nieuwe instance
 
-    private static ImageIcon foto; //nieuwe instance
+
+
+    private ImageIcon foto; //nieuwe instance
 
     public Speelveld() { //nieuwe constructor
 
@@ -25,43 +26,46 @@ public class Speelveld {
 
     }
 
-    public static ImageIcon setFoto(ImageIcon picture) { //nieuwe methode
+    public ImageIcon setFoto(ImageIcon picture) { //nieuwe methode
         return foto = picture;
     }
 
-    public static ImageIcon getFoto() { //nieuwe methode
+    public ImageIcon getFoto() { //nieuwe methode
         return foto;
     }
 
-    public static void addJLabel(int index, JLabel jlabel) { //nieuwe methode
+    public void addJLabel(int index, JLabel jlabel) { //nieuwe methode
         label.add(index, jlabel);
     }
 
-    public void startDoolHof(JPanel panel, int level) { //nieuwe methode
-        Speler speler = new Speler();
-        speler.createSpeler(panel);
+    public void addVlak(Vlak vlak) { //nieuwe methode
+        vlakken.add(vlak);
+    }
 
+    public void startDoolHof(JPanel panel, int level) { //nieuwe methode
         setFoto(new ImageIcon(("vlak.jpg")));
         for (int i = 1; i < 100; i++) {
                 label.add(i, new JLabel(getFoto()));
                 panel.add(label.get(i));
         }
-        Vlak vlak = new Vlak();
+        System.out.println("size: " + label.size());
+
+        Vlak vlak;
         for (int y = 1; y <= 10; y++) {
             for (int x = 1; x <= 10; x++) {
-                if (vlak.getNaam() == "Speler") {
+                /*if (vlakken.get(0).getNaam() == "Speler") {
                     System.out.println("Found..");
                     continue;
-                }
+                }*/
                 Point point = new Point(x, y);
                 vlak = new Vlak(point, "Leegvlak");
-                vlakken.add(vlak);
-                posities.add(posities.size(), point);
+                addVlak(vlak);
                 System.out.println("Location: " + point.getLocation());
-                System.out.println("size:" + posities.size());
+                System.out.println("size: " + vlakken.size());
                 System.out.println("Naam:" + vlak.getNaam());
             }
         }
+        System.out.println("Naam vlak: " + vlakken.get(0).getNaam());
     }
 
     public static void main (String[] args) { //nieuwe methode
@@ -77,7 +81,9 @@ public class Speelveld {
 
     public static void setup(JPanel panel) { //nieuwe methode
         Speelveld doolhof= new Speelveld();
+        Speler speler = new Speler();
 
+        speler.createSpeler(panel);
         doolhof.startDoolHof(panel, 1);
     }
 

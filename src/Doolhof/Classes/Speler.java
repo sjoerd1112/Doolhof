@@ -20,8 +20,9 @@ public class Speler {
 
     }
 
-    public void createSpeler(JPanel speler) { //nieuwe methode(NOG NIET GOED)
+    public void createSpeler(JPanel speler) { //nieuwe methode
         Speelveld speelveld = new Speelveld();
+
         speelveld.setFoto(new ImageIcon(("speler neutraal.jpg")));
         JLabel label = new JLabel(speelveld.getFoto());
 
@@ -29,6 +30,7 @@ public class Speler {
         speler.add(label);
         Point point = new Point(1, 1);
         Vlak vlak = new Vlak(point, "Speler");
+        speelveld.addVlak(vlak);
     }
 
     public int getPositieX() {
