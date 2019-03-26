@@ -1,7 +1,9 @@
 package Doolhof.Classes;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -17,6 +19,8 @@ public class Speler {
 
     private Speelveld speelveld = new Speelveld(); //nieuwe constructor
     private ArrayList<Vlak> vlakken = speelveld.getVlakken(); //nieuwe instance
+
+    private ImageIcon icon = new ImageIcon(("speler neutraal.jpg")); //nieuwe instance
 
     public Speler(Point point, String naam) { //nieuwe paramwter String naam
         positieX = (int) point.getX();
@@ -55,6 +59,11 @@ public class Speler {
 
     public void pakSleutel(){
 
+    }
+
+    public ImageIcon getIcon() {
+        icon = new ImageIcon(icon.getImage().getScaledInstance(102, 60, BufferedImage.SCALE_SMOOTH));
+        return icon;
     }
 
     public void beweeg(KeyEvent event){ //Basis functie werkt (pijltjes toets bediening & coördinaten stellen) - zie System.out.println

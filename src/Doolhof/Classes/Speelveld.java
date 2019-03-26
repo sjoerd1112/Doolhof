@@ -108,19 +108,33 @@ public class Speelveld {
                     break;
                 case "Speler":
                     panel.add(new JButton("Speler"));
+
                     break;
                 case "Barricade":
-                    panel.add(new JButton("Barricade, " + barricade.getWaarde(index_barricade)));
+                    //panel.add(new JButton("Barricade, " + barricade.getWaarde(index_barricade)));
+
+                    JLabel label = new JLabel(String.valueOf(barricade.getWaarde(index_barricade)));
+                    label.setIcon(barricade.getIcon());
+                    panel.add(label);
+
                     index_barricade++;
                     break;
                 case "Sleutel":
-                    panel.add(new JButton("Sleutel, " + sleutel.getWaarde(index_sleutel) + ""));
+                    label = new JLabel(String.valueOf(sleutel.getWaarde(index_sleutel)));
+                    label.setIcon(sleutel.getIcon());
+                    panel.add(label);
+                    //panel.add(new JButton("Sleutel, " + sleutel.getWaarde(index_sleutel) + ""));
                     index_sleutel++;
                     break;
                 case "Muur":
-                    panel.add(new JButton("Muur"));
+                    label = new JLabel();
+                    label.setIcon(muur.getIcon());
+                    panel.add(label);
+
+                    //panel.add(new JButton("Muur"));
                     break;
                 case "EindVeld":
+
                     panel.add(new JButton("EindVeld"));
                     break;
             }
