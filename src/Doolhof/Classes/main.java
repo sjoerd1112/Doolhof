@@ -1,13 +1,28 @@
 package Doolhof.Classes;
 
+import Doolhof.interfaces.KeyListener;
+
 import javax.swing.*;
-import Doolhof.components.label;
+
+import java.awt.*;
 
 public class main {
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(600,600);
+
+    public static void main (String[] args) { //nieuwe methode
+        JFrame frame = new JFrame("Doolhof");
+        JPanel panel = new JPanel(new GridLayout(10, 10));
+        KeyListener listener = new MyKeyListener();
+
+        new Speelveld(panel);
+
+        panel.addKeyListener(listener);
+        panel.setFocusable(true);
+
+        frame.add(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setResizable(false);
         frame.setVisible(true);
     }
+
 }

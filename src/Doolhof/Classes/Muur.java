@@ -7,8 +7,15 @@ import java.awt.*;
  */
 public class Muur extends Vlak{
 
+    private final int[][] locatie = { {1, 3}, {2, 1}, {5, 7}}; //nieuwe array
 
     public Muur(Point point, String naam) {
         super(point, naam);
+    }
+
+    public Muur() { } //nieuwe Constructor
+
+    public int[][] getLocatie() { //nieuwe methode
+        return locatie;
     }
 }

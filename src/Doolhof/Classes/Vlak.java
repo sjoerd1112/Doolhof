@@ -11,7 +11,12 @@ public class Vlak {
     private Point point;
     private String naam;
 
+    private ImageIcon foto = new ImageIcon(("vlak.jpg")); //nieuwe instance
+
     public Vlak(Point point, String naam) {
+        if (naam.equals("Speler")) {
+            new Speler(point, naam);
+        }
         this.point = point;
         this.naam = naam;
     }
@@ -32,5 +37,13 @@ public class Vlak {
     }
 
     public String setNaam(String name) { return naam = name; } //nieuwe methode
+
+    public ImageIcon setFoto(ImageIcon picture) { //nieuwe methode
+        return foto = picture;
+    } //nieuwe methode
+
+    public ImageIcon getFoto() { //nieuwe methode
+        return foto;
+    } //nieuwe methode
 
 }

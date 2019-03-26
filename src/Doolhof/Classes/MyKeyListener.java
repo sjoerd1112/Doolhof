@@ -2,7 +2,6 @@ package Doolhof.Classes;
 
 import Doolhof.interfaces.KeyListener;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 /**
@@ -10,6 +9,7 @@ import java.awt.event.KeyEvent;
  */
 public class MyKeyListener implements KeyListener {
 
+    Speler speler = new Speler(); //nieuwe instance
 
     @Override
     public void keyTyped(KeyEvent event) {
@@ -24,18 +24,22 @@ public class MyKeyListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent event) {
         if(event.getKeyCode()==37){
+            speler.beweeg(event);
             System.out.println("left");
         }
         else{
             if(event.getKeyCode()==38){
+                speler.beweeg(event);
                 System.out.println("up");
             }
             else{
                 if(event.getKeyCode()==39){
+                    speler.beweeg(event);
                     System.out.println("right");
                 }
                 else{
                     if(event.getKeyCode()==40){
+                        speler.beweeg(event);
                         System.out.println("down");
                     }
                     else{
@@ -49,16 +53,5 @@ public class MyKeyListener implements KeyListener {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        KeyListener listener = new MyKeyListener();
-        JFrame frame = new JFrame();
-        JLabel label = new JLabel("text");
-        frame.add(label);
-        frame.addKeyListener(listener);
-        frame.setSize(400,200);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setVisible(true);
     }
 }
