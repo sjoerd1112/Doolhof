@@ -10,9 +10,10 @@ public class main {
 
     public static void main (String[] args) { //nieuwe methode
         JFrame frame = new JFrame("Doolhof");
-        JPanel panel = new JPanel(new GridLayout(10, 10));
+        JPanel panel = new JPanel(new GridLayout(12, 10));
         KeyListener listener = new MyKeyListener();
 
+        new GamePanel(panel);
         new Speelveld(panel);
 
         panel.addKeyListener(listener);
