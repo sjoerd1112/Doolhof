@@ -1,9 +1,7 @@
 package Doolhof.Classes;
 
 import Doolhof.interfaces.KeyListener;
-
 import javax.swing.*;
-
 import java.awt.*;
 
 public class main {
