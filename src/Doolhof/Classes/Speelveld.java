@@ -11,11 +11,16 @@ public class Speelveld {
 
     private int level;
 
-    private final static ArrayList<Vlak> vlakken = new ArrayList<>(100);; //nieuwe instance
+    private final static ArrayList<JLabel> labels = new ArrayList<>(100);
+    private final static ArrayList<Vlak> vlakken = new ArrayList<>(100);
 
     private Sleutel sleutel = new Sleutel(); //nieuwe instance
     private Barricade barricade = new Barricade(); //nieuwe instance
     private Muur muur = new Muur(); //nieuwe instance
+    private Eindveld eindveld = new Eindveld(); //nieuwe instance
+    private leegVlak leegvlak = new leegVlak(); //nieuwe instance
+    private Speler speler; //nieuwe instance
+
 
     public Speelveld(JPanel panel) { //nieuwe constructor
         startDoolHof(panel, 1);
@@ -25,15 +30,26 @@ public class Speelveld {
 
     }
 
-    public void startOpnieuw(int level) { }
+    public void startOpnieuw(int level) {
+    }
 
     public void setVlak(int index, Vlak vlak) { //nieuwe methode
         vlakken.set(index, vlak);
     }
 
+    public void setLabel(JPanel panel, int index_van, int index_naar, JLabel van, JLabel naar) {
+        labels.set(index_van, van);
+        labels.set(index_naar, naar);
+
+        panel.revalidate();
+        panel.repaint();
+    }
+
     public ArrayList getVlakken() {
         return vlakken;
     }
+
+    public ArrayList getLabels() { return labels; }
 
     public void startDoolHof(JPanel panel, int level) { //nieuwe methode
         Vlak vlak;
@@ -50,23 +66,25 @@ public class Speelveld {
                 }
             }
         }
-        initializeSpeler();
+        initializeSpeler(panel);
         initializeBarricades();
         initializeSleutels();
         initializeMuren();
         initializeEindVeld();
         loadImages(panel);
-        System.out.println("Size: " + vlakken.size());
+        System.out.println("Vlakken size: " + vlakken.size());
     }
 
-    public void initializeSpeler() { //nieuwe methode
-        new Speler(vlakken.get(0).getPoint(), "Speler"); //0 = start positie, correcte code --> Associatie met Speelveld.
+    private void initializeSpeler(JPanel panel) { //nieuwe methode
+        speler = new Speler(vlakken.get(0).getPoint(), "Speler"); //0 = start positie, correcte code --> Associatie met Speelveld.
+        setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //leegVlak, want speler 'staat' op leegVlak
         //Speler is GEEN statisch object van het superklasse Vlak.
         //setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //tijdelijk gebruikt voor test doeleinden
+        System.out.println(speler);
         System.out.println("coordinates Player: " + vlakken.get(0).getPoint());
     }
 
-    public void initializeBarricades() { //nieuwe methode
+    private void initializeBarricades() { //nieuwe methode
         int index;
 
         for (int i = 0; i < barricade.getLocatie().length; i++) {
@@ -75,7 +93,7 @@ public class Speelveld {
         }
     }
 
-    public void initializeSleutels() { //nieuwe methode
+    private void initializeSleutels() { //nieuwe methode
         int index;
 
         for (int i = 0; i < sleutel.getLocatie().length; i++) {
@@ -84,7 +102,7 @@ public class Speelveld {
         }
     }
 
-    public void initializeMuren() { //nieuwe methode
+    private void initializeMuren() { //nieuwe methode
         int index;
 
         for (int i = 0; i < muur.getLocatie().length; i++) {
@@ -93,51 +111,64 @@ public class Speelveld {
         }
     }
 
-    public void initializeEindVeld() { //nieuwe methode
+    private void initializeEindVeld() { //nieuwe methode
         setVlak(99, new Eindveld(vlakken.get(99).getPoint(), "EindVeld"));
     }
 
-    public void loadImages(JPanel panel) { //nieuwe methode
+    private void loadImages(JPanel panel) { //nieuwe methode
         int index_barricade = 0;
         int index_sleutel = 0;
+        JLabel label;
         for (int i = 0; i < vlakken.size(); i++) {
             String naam = vlakken.get(i).getNaam();
             switch(naam) {
                 case "LeegVlak":
-                    panel.add(new JButton("X: " + vlakken.get(i).getPoint().getX() + " Y: " + vlakken.get(i).getPoint().getY()));
+                    //panel.add(new JButton("X: " + vlakken.get(i).getPoint().getX() + " Y: " + vlakken.get(i).getPoint().getY()));
+                    label = new JLabel(leegvlak.getIcon());
+                    panel.add(label);
+                    labels.add(i, label);
+                    System.out.println("Index leegvlak: " + i);
                     break;
                 case "Speler":
-                    panel.add(new JButton("Speler"));
-
+                    label = new JLabel(speler.getIcon());
+                    panel.add(label);
+                    labels.add(i, label);
+                    System.out.println("Index speler: " + i);
                     break;
                 case "Barricade":
                     //panel.add(new JButton("Barricade, " + barricade.getWaarde(index_barricade)));
 
-                    JLabel label = new JLabel(String.valueOf(barricade.getWaarde(index_barricade)));
-                    label.setIcon(barricade.getIcon());
+                    //label = new JLabel(); //String.valueOf(barricade.getWaarde(index_barricade))
+                    label = new JLabel(barricade.getIcon());
                     panel.add(label);
+                    labels.add(i, label);
+                    System.out.println("Index barricade: " + i);
 
                     index_barricade++;
                     break;
                 case "Sleutel":
-                    label = new JLabel(String.valueOf(sleutel.getWaarde(index_sleutel)));
-                    label.setIcon(sleutel.getIcon());
+                    //label = new JLabel();//String.valueOf(sleutel.getWaarde(index_sleutel))
+                    label = new JLabel(sleutel.getIcon());
                     panel.add(label);
+                    labels.add(i, label);
+                    System.out.println("Index sleutel: " + i);
                     //panel.add(new JButton("Sleutel, " + sleutel.getWaarde(index_sleutel) + ""));
                     index_sleutel++;
                     break;
                 case "Muur":
-                    label = new JLabel();
-                    label.setIcon(muur.getIcon());
+                    label = new JLabel(muur.getIcon());
                     panel.add(label);
-
-                    //panel.add(new JButton("Muur"));
+                    labels.add(i, label);
+                    System.out.println("Index muur: " + i);
                     break;
                 case "EindVeld":
-                    panel.add(new JButton("EindVeld"));
+                    label = new JLabel(eindveld.getIcon());
+                    panel.add(label);
+                    labels.add(i, label);
+                    System.out.println("Index eindveld: " + i);
                     break;
             }
-            //panel.add(new JLabel(vlak.getFoto()));
         }
+        System.out.println("Labels size: " + labels.size());
     }
 }

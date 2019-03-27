@@ -28,7 +28,6 @@ public class Sleutel extends Vlak{
     }
 
     public ImageIcon getIcon() {
-        icon = new ImageIcon(icon.getImage().getScaledInstance(102, 60, BufferedImage.SCALE_SMOOTH));
         return icon;
     }
 }

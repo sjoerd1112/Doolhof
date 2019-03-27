@@ -1,14 +1,17 @@
 package Doolhof.Classes;
 
 import Doolhof.interfaces.KeyListener;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class main {
 
+    private static JPanel panel; //nieuwe instance
+
     public static void main (String[] args) { //nieuwe methode
         JFrame frame = new JFrame("Doolhof");
-        JPanel panel = new JPanel(new GridLayout(12, 10));
+        panel = new JPanel(new GridLayout(10, 10));
         KeyListener listener = new MyKeyListener();
 
         new GamePanel(panel);
@@ -24,4 +27,7 @@ public class main {
         frame.setVisible(true);
     }
 
+    public static JPanel getPanel() { //nieuwe methode
+        return panel;
+    }
 }

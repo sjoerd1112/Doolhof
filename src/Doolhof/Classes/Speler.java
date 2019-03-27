@@ -19,6 +19,9 @@ public class Speler {
 
     private Speelveld speelveld = new Speelveld(); //nieuwe constructor
     private ArrayList<Vlak> vlakken = speelveld.getVlakken(); //nieuwe instance
+    private ArrayList<JLabel> labels = speelveld.getLabels();
+    private JPanel panel = main.getPanel();
+    private leegVlak leegvlak = new leegVlak(); //nieuwe instance
 
     private ImageIcon icon = new ImageIcon(("speler neutraal.jpg")); //nieuwe instance
 
@@ -62,50 +65,80 @@ public class Speler {
     }
 
     public ImageIcon getIcon() {
-        icon = new ImageIcon(icon.getImage().getScaledInstance(102, 60, BufferedImage.SCALE_SMOOTH));
+        //icon = new ImageIcon(icon.getImage().getScaledInstance(60, 60, BufferedImage.SCALE_SMOOTH));
         return icon;
     }
 
-    public void beweeg(KeyEvent event){ //Basis functie werkt (pijltjes toets bediening & coördinaten stellen) - zie System.out.println
+    public void beweeg(KeyEvent event){
         if (validMovement(event)) {
+            JLabel speler;
+            JLabel leegVlak;
+            String vlak;
+
             int keyCode = event.getKeyCode();
             int x = getPositieX();
             int y = getPositieY();
             int index = getPositieX() + (getPositieY() * 10);
-            String vlak;
+            leegVlak = labels.get(index);
+
             switch (keyCode) {
                 case 37: //left
                     vlak = vlakken.get((x - 1)).getNaam();
+                    speler = labels.get(index - 1);
                     System.out.println(vlak);
                     System.out.println(index);
                     if (vlak.equals("LeegVlak")) {
                         setPositieX((x - 1));
-                        System.out.println(index);
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+
+                        speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                     }
                     break;
                 case 39: //right
                     vlak = vlakken.get((x + 1)).getNaam();
+                    speler = labels.get(index + 1);
                     System.out.println("index: " + index);
                     if (vlak.equals("LeegVlak")) {
                         setPositieX((x + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+
+                        speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                     }
                     break;
                 case 38: //up
                     vlak = vlakken.get((y - 1)).getNaam();
+                    speler = labels.get(index - 10);
                     System.out.println("index: " + index);
                     if (vlak.equals("LeegVlak")) {
                         setPositieY((y - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+
+                        speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     }
                     break;
                 case 40: //down
                     vlak = vlakken.get((y + 1)).getNaam();
+                    speler = labels.get(index + 10);
                     System.out.println("index: " + index);
                     if (vlak.equals("LeegVlak")) {
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                        System.out.println("index: " + (index + 10));
+
+                        speler.setIcon(getIcon());
+                        leegVlak.setIcon(leegvlak.getIcon());
+
+                        speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     }
                     break;
             }

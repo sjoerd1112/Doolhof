@@ -9,13 +9,14 @@ import java.awt.image.BufferedImage;
  */
 public class leegVlak extends Vlak{
 
-    private ImageIcon icon = new ImageIcon(("valk.jpg")); //nieuwe instance
+    private ImageIcon icon = new ImageIcon(("vlak.jpg")); //nieuwe instance
 
     public leegVlak(Point point, String naam) { super(point, naam);
     }
 
+    public leegVlak() { } //nieuwe constructor
+
     public ImageIcon getIcon() {
-        icon = new ImageIcon(icon.getImage().getScaledInstance(102, 60, BufferedImage.SCALE_SMOOTH));
         return icon;
     }
 }

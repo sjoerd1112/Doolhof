@@ -13,9 +13,6 @@ public class Vlak {
     private String naam;
 
     public Vlak(Point point, String naam) {
-        if (naam.equals("Speler")) {
-            new Speler(point, naam);
-        }
         this.point = point;
         this.naam = naam;
     }

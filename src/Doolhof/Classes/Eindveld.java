@@ -15,8 +15,9 @@ public class Eindveld extends Vlak{
         super(point, naam);
     }
 
+    public Eindveld() { }
+
     public ImageIcon getIcon() {
-        icon = new ImageIcon(icon.getImage().getScaledInstance(102, 60, BufferedImage.SCALE_SMOOTH));
         return icon;
     }
 }
