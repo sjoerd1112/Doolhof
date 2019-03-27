@@ -10,7 +10,7 @@ public class GamePanel {
     }
 
     public void startSpel()    {
-
+        //hoi
     }
 
     public void opnieuwStarten()    {
