@@ -134,7 +134,6 @@ public class Speelveld {
                     //panel.add(new JButton("Muur"));
                     break;
                 case "EindVeld":
-
                     panel.add(new JButton("EindVeld"));
                     break;
             }
