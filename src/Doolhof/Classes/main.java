@@ -14,8 +14,9 @@ public class main {
         panel = new JPanel(new GridLayout(10, 10));
         KeyListener listener = new MyKeyListener();
 
-        new GamePanel(panel);
+
         new Speelveld(panel);
+        new GamePanel(panel);
 
         panel.addKeyListener(listener);
         panel.setFocusable(true);
@@ -23,6 +24,7 @@ public class main {
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setSize(700, 700);
         frame.setResizable(false);
         frame.setVisible(true);
     }

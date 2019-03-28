@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
  */
 public class leegVlak extends Vlak{
 
-    private ImageIcon icon = new ImageIcon(("vlak.jpg")); //nieuwe instance
+    private ImageIcon icon = new ImageIcon(("wit_vlak.jpg")); //nieuwe instance
 
     public leegVlak(Point point, String naam) { super(point, naam);
     }

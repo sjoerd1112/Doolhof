@@ -16,16 +16,21 @@ public class GamePanel {
             }
         });
         panel.add(restart);
-        for(int i = 0;i<19;i++){
-            panel.add(new JLabel());
-        }
+        JButton nieuwSpel = new JButton("Nieuw spel");
+        restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nieuwSpel();
+            }
+        });
+        panel.add(nieuwSpel);
     }
 
-    public void startSpel()    {
-        //hoi
+    public void nieuwSpel()    {
+        System.out.println("Start een nieuw spel");
     }
 
     public void opnieuwStarten()    {
-        System.out.println("restart");
+        System.out.println("Restart");
     }
 }
