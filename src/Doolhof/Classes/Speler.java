@@ -83,8 +83,7 @@ public class Speler {
 
             switch (keyCode) {
                 case 37: //left
-                    vlak = vlakken.get((x - 1)).getNaam();
-                    System.out.println(vlak);
+                    vlak = vlakken.get((x - 1 + y*10)).getNaam();
                     speler = labels.get(index - 1);
                     System.out.println(vlak);
                     System.out.println(index);
@@ -99,7 +98,7 @@ public class Speler {
                     }
                     break;
                 case 39: //right
-                    vlak = vlakken.get((x + 1)).getNaam();
+                    vlak = vlakken.get((x + 1 + y*10)).getNaam();
                     System.out.println(vlak);
                     speler = labels.get(index + 1);
                     System.out.println("index: " + index);
@@ -114,7 +113,7 @@ public class Speler {
                     }
                     break;
                 case 38: //up
-                    vlak = vlakken.get((y - 1)).getNaam();
+                    vlak = vlakken.get(((y - 1)*10 + x)).getNaam();
                     System.out.println(vlak);
                     speler = labels.get(index - 10);
                     System.out.println("index: " + index);
@@ -129,7 +128,7 @@ public class Speler {
                     }
                     break;
                 case 40: //down
-                    vlak = vlakken.get((y + 1)).getNaam();
+                    vlak = vlakken.get(((y + 1)*10 + x)).getNaam();
                     System.out.println(vlak);
                     speler = labels.get(index + 10);
                     System.out.println("index: " + index);
@@ -143,9 +142,6 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
-                    }
-                    else if (vlak.equals("Muur"))   {
-                        System.out.println("Daar staat een muur.");
                     }
                     break;
             }
