@@ -84,6 +84,7 @@ public class Speler {
             switch (keyCode) {
                 case 37: //left
                     vlak = vlakken.get((x - 1)).getNaam();
+                    System.out.println(vlak);
                     speler = labels.get(index - 1);
                     System.out.println(vlak);
                     System.out.println(index);
@@ -99,6 +100,7 @@ public class Speler {
                     break;
                 case 39: //right
                     vlak = vlakken.get((x + 1)).getNaam();
+                    System.out.println(vlak);
                     speler = labels.get(index + 1);
                     System.out.println("index: " + index);
                     if (vlak.equals("LeegVlak")) {
@@ -113,6 +115,7 @@ public class Speler {
                     break;
                 case 38: //up
                     vlak = vlakken.get((y - 1)).getNaam();
+                    System.out.println(vlak);
                     speler = labels.get(index - 10);
                     System.out.println("index: " + index);
                     if (vlak.equals("LeegVlak")) {
