@@ -39,7 +39,7 @@ public class main {
 
     }
     public static void showVictoryPopUp()   {
-        JFrame victory = new JFrame("Victory");
+        final JFrame victory = new JFrame("Victory");
         JPanel vPanel = new JPanel();
         JButton vButton = new JButton("Je hebt gewonnen!");
         vButton.addActionListener(new ActionListener() {

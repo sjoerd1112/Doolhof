@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import static Doolhof.Classes.main.showPopUp;
+import static Doolhof.Classes.main.showVictoryPopUp;
 
 /**
  * Created by sjoer on 13-3-2019.
@@ -102,7 +103,7 @@ public class Speler {
                     } else if(vlakNaam.equals("Sleutel")){
                         showPopUp();
                     } else if(vlakNaam.equals("Eindveld"))  {
-
+                        showVictoryPopUp();
                     }
 
                     break;
@@ -122,6 +123,8 @@ public class Speler {
                         speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                         showPopUp();
+                    }else if(vlakNaam.equals("Eindveld"))  {
+                        showVictoryPopUp();
                     }
                     break;
                 case 38: //up
@@ -140,12 +143,14 @@ public class Speler {
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                             showPopUp();
+                    }else if(vlakNaam.equals("Eindveld"))  {
+                        showVictoryPopUp();
                     }
                     break;
                 case 40: //down
                     vlak = vlakken.get(((y + 1)*10 + x));
                     vlakNaam = vlak.getNaam();
-                    //System.out.println(vlakNaam);
+                    System.out.println(vlakNaam);
                     speler = labels.get(index + 10);
                     //System.out.println("index: " + index);
                     if (vlakNaam.equals("LeegVlak")) {
@@ -160,6 +165,9 @@ public class Speler {
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                             showPopUp();
+                    }else if(vlakNaam.equals("Eindveld"))  {
+                        showVictoryPopUp();
+                        System.out.println("hier");
                     }
                     break;
             }
