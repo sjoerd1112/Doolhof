@@ -11,7 +11,7 @@ public class main {
 
     public static void main (String[] args) { //nieuwe methode
         JFrame frame = new JFrame("Doolhof");
-        panel = new JPanel(new GridLayout(10, 10));
+        panel = new JPanel(new GridLayout(11, 10));
         KeyListener listener = new MyKeyListener();
 
 
