@@ -99,7 +99,12 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
+                    } else if(vlakNaam.equals("Sleutel")){
+                        showPopUp();
+                    } else if(vlakNaam.equals("Eindveld"))  {
+
                     }
+
                     break;
                 case 39: //right
                     vlak = vlakken.get((x + 1 + y*10));
@@ -115,6 +120,8 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
+                    } else if(vlakNaam.equals("Sleutel")){
+                        showPopUp();
                     }
                     break;
                 case 38: //up
@@ -131,12 +138,8 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
-                    }
-                    else{
-                        if(vlakNaam.equals("Sleutel")){
+                    } else if(vlakNaam.equals("Sleutel")){
                             showPopUp();
-                            System.out.println("hier");
-                        }
                     }
                     break;
                 case 40: //down
@@ -155,6 +158,8 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
+                    } else if(vlakNaam.equals("Sleutel")){
+                            showPopUp();
                     }
                     break;
             }

@@ -6,6 +6,8 @@ import oracle.jrockit.jfr.JFR;
 import javax.accessibility.AccessibleComponent;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class main {
 
@@ -38,4 +40,19 @@ public class main {
     public static void showPopUp(){
 
     }
+    public static void showVictoryPopUp()   {
+        JFrame victory = new JFrame("Victory");
+        JPanel vPanel = new JPanel();
+        JButton vButton = new JButton("Je hebt gewonnen!");
+        vbutton.addActionListener(new ActionListener() {
+            @override
+            public void actionPerformed(ActionEvent e)
+            {
+                frameToClose.dispose();
+            }
+        });
+        victory.add(vPanel);
+        victory.add(vButton);
+    }
+
 }
