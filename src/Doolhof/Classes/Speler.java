@@ -126,6 +126,11 @@ public class Speler {
 
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     }
+                    else{
+                        if(vlak.equals("Sleutel")){
+                            System.out.println("hier is een sleutel");
+                        }
+                    }
                     break;
                 case 40: //down
                     vlak = vlakken.get(((y + 1)*10 + x)).getNaam();
