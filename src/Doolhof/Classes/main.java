@@ -1,9 +1,7 @@
 package Doolhof.Classes;
 
 import Doolhof.interfaces.KeyListener;
-import oracle.jrockit.jfr.JFR;
 
-import javax.accessibility.AccessibleComponent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -44,11 +42,11 @@ public class main {
         JFrame victory = new JFrame("Victory");
         JPanel vPanel = new JPanel();
         JButton vButton = new JButton("Je hebt gewonnen!");
-        vbutton.addActionListener(new ActionListener() {
-            @override
+        vButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e)
             {
-                frameToClose.dispose();
+                victory.dispose();
             }
         });
         victory.add(vPanel);
