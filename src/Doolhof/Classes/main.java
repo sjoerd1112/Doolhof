@@ -1,7 +1,9 @@
 package Doolhof.Classes;
 
 import Doolhof.interfaces.KeyListener;
+import oracle.jrockit.jfr.JFR;
 
+import javax.accessibility.AccessibleComponent;
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,5 +33,9 @@ public class main {
 
     public static JPanel getPanel() { //nieuwe methode
         return panel;
+    }
+
+    public static void showPopUp(){
+
     }
 }

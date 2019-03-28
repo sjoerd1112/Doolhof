@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import static Doolhof.Classes.main.showPopUp;
+
 /**
  * Created by sjoer on 13-3-2019.
  */
@@ -73,7 +75,8 @@ public class Speler {
         if (validMovement(event)) {
             JLabel speler;
             JLabel leegVlak;
-            String vlak;
+            Vlak vlak;
+            String vlakNaam;
 
             int keyCode = event.getKeyCode();
             int x = getPositieX();
@@ -83,11 +86,12 @@ public class Speler {
 
             switch (keyCode) {
                 case 37: //left
-                    vlak = vlakken.get((x - 1 + y*10)).getNaam();
+                    vlak = vlakken.get((x - 1 + y*10));
+                    vlakNaam = vlak.getNaam();
                     speler = labels.get(index - 1);
-                    System.out.println(vlak);
-                    System.out.println(index);
-                    if (vlak.equals("LeegVlak")) {
+                    //System.out.println(vlakNaam);
+                    //System.out.println(index);
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
 
@@ -98,11 +102,12 @@ public class Speler {
                     }
                     break;
                 case 39: //right
-                    vlak = vlakken.get((x + 1 + y*10)).getNaam();
-                    System.out.println(vlak);
+                    vlak = vlakken.get((x + 1 + y*10));
+                    vlakNaam = vlak.getNaam();
+                    //System.out.println(vlakNaam);
                     speler = labels.get(index + 1);
-                    System.out.println("index: " + index);
-                    if (vlak.equals("LeegVlak")) {
+                    //System.out.println("index: " + index);
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
 
@@ -113,11 +118,12 @@ public class Speler {
                     }
                     break;
                 case 38: //up
-                    vlak = vlakken.get(((y - 1)*10 + x)).getNaam();
-                    System.out.println(vlak);
+                    vlak = vlakken.get(((y - 1)*10 + x));
+                    vlakNaam = vlak.getNaam();
+                    //System.out.println(vlakNaam);
                     speler = labels.get(index - 10);
-                    System.out.println("index: " + index);
-                    if (vlak.equals("LeegVlak")) {
+                    //System.out.println("index: " + index);
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
 
@@ -127,17 +133,19 @@ public class Speler {
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     }
                     else{
-                        if(vlak.equals("Sleutel")){
-                            System.out.println("hier is een sleutel");
+                        if(vlakNaam.equals("Sleutel")){
+                            showPopUp();
+                            System.out.println("hier");
                         }
                     }
                     break;
                 case 40: //down
-                    vlak = vlakken.get(((y + 1)*10 + x)).getNaam();
-                    System.out.println(vlak);
+                    vlak = vlakken.get(((y + 1)*10 + x));
+                    vlakNaam = vlak.getNaam();
+                    //System.out.println(vlakNaam);
                     speler = labels.get(index + 10);
-                    System.out.println("index: " + index);
-                    if (vlak.equals("LeegVlak")) {
+                    //System.out.println("index: " + index);
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
 
@@ -153,6 +161,7 @@ public class Speler {
             System.out.println("Positie x: " + getPositieX());
             System.out.println("Positie y: " + getPositieY());
             System.out.println("Movement positive");
+            System.out.println();
         } else {
             System.out.println("Movement negative");
         }
@@ -189,5 +198,10 @@ public class Speler {
                 return true;
         }
         return false;
+    }
+
+    private boolean pickup(){
+        showPopUp();
+        return true;
     }
 }
