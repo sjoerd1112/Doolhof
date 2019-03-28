@@ -127,6 +127,7 @@ public class Speler {
                     break;
                 case 40: //down
                     vlak = vlakken.get((y + 1)).getNaam();
+                    System.out.println(vlak);
                     speler = labels.get(index + 10);
                     System.out.println("index: " + index);
                     if (vlak.equals("LeegVlak")) {
@@ -139,6 +140,9 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
+                    }
+                    else if (vlak.equals("Muur"))   {
+                        System.out.println("Daar staat een muur.");
                     }
                     break;
             }
