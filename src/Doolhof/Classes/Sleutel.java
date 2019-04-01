@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
  */
 public class Sleutel extends Vlak{
 
-    private final int[][] locatie = { {1, 4, 300}, {2, 2, 200}, {5, 8, 100}}; //nieuwe array
+    private static final int[][] locatie = { {1, 4, 300}, {2, 2, 200}, {5, 8, 100}}; //nieuwe array
 
     private ImageIcon icon = new ImageIcon(("key.jpg")); //nieuwe instance
 
@@ -19,7 +19,7 @@ public class Sleutel extends Vlak{
 
     public Sleutel() { } //nieuwe instance
 
-    public int[][] getLocatie() { //nieuwe methode
+    public static int[][] getLocatie() { //nieuwe methode
         return locatie;
     }
 

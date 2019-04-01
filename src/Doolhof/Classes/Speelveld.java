@@ -47,7 +47,7 @@ public class Speelveld {
         panel.repaint();
     }
 
-    public ArrayList getVlakken() {
+    public ArrayList<Vlak> getVlakken() {
         return vlakken;
     }
 

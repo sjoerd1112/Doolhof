@@ -1,5 +1,7 @@
 package Doolhof.Classes;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -100,7 +102,7 @@ public class Speler {
 
                         speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                        showPopUp();
+                        showPopUp(index-1);
                     } else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                     }
@@ -121,7 +123,7 @@ public class Speler {
 
                         speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                        showPopUp();
+                        showPopUp(index+1);
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                     }
@@ -141,7 +143,7 @@ public class Speler {
 
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                            showPopUp();
+                            showPopUp(index-10);
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                     }
@@ -155,21 +157,16 @@ public class Speler {
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
-                        //System.out.println("index: " + (index + 10));
-
                         speler.setIcon(getIcon());
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                            showPopUp();
+                            showPopUp(index+10);
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
-                        //System.out.println("index: " + (index + 10));
 
                         speler.setIcon(getIcon());
                         leegVlak.setIcon(leegvlak.getIcon());
@@ -220,8 +217,8 @@ public class Speler {
         return false;
     }
 
-    public static void showPopUp(){
-        JFrame sleutel = new JFrame("Sleutel");
+    public void showPopUp(final int ind){
+        final JFrame sleutel = new JFrame("Sleutel");
         JPanel sPanel = new JPanel();
         JLabel sLabel = new JLabel("Wilt u de sleutel oppaken?");
         JButton sButton = new JButton("Ja");
@@ -235,7 +232,7 @@ public class Speler {
         sleutel.setSize(175,150);
         sleutel.pack();
         sleutel.setResizable(false);
-        sleutel.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        sleutel.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         sleutel.setLocationRelativeTo(null);
         sleutel.setVisible(true);
 
@@ -243,6 +240,30 @@ public class Speler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ja");
+                sleutel.dispose();
+                main.setFrameState(true);
+                main.setKeyListener();
+                int index = ind;
+                Vlak naar = speelveld.getVlakken().get(index);
+                System.out.println(naar.getNaam());
+                if(naar.getNaam().equals("Sleutel")){
+                    Sleutel waarde = (Sleutel) speelveld.getVlakken().get(index);
+                    int x = index%10;
+                    int newIndex = index - (index%10);
+                    int y = newIndex/10;
+
+                    int sleutelWaarde = 0;
+                    int[][] locatie = Sleutel.getLocatie();
+                    for(int i = 0; i<locatie.length;i++){
+                        if(locatie[i][0]==x && locatie[i][1] == y){
+                            sleutelWaarde = locatie[i][2];
+                        }
+                    }
+                    System.out.println(sleutelWaarde);
+                }
+                speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                JLabel leegVlak = labels.get(index);
+                leegVlak.setIcon(leegvlak.getIcon());
             }
         });
 
@@ -250,6 +271,9 @@ public class Speler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Nee");
+                sleutel.dispose();
+                main.setFrameState(true);
+                main.setKeyListener();
             }
         });
     }
