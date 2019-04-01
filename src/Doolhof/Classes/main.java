@@ -30,6 +30,7 @@ public class main {
         frame.pack();
         frame.setSize(700, 700);
         frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -39,10 +40,6 @@ public class main {
 
     public static void setFrameState(boolean state){
         frame.setEnabled(state);
-    }
-
-    public static boolean getFrameState(){
-        return frame.isEnabled();
     }
 
     public static void setKeyListener(){

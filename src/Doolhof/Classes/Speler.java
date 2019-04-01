@@ -8,8 +8,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import static Doolhof.Classes.main.getFrameState;
-
 /**
  * Created by sjoer on 13-3-2019.
  */
@@ -74,9 +72,6 @@ public class Speler {
     }
 
     public void beweeg(KeyEvent event){
-        if(getFrameState() == false){
-            System.out.println(event.getKeyChar());
-        }
         if (validMovement(event)) {
             JLabel speler;
             JLabel leegVlak;
@@ -154,14 +149,14 @@ public class Speler {
                 case 40: //down
                     vlak = vlakken.get(((y + 1)*10 + x));
                     vlakNaam = vlak.getNaam();
-                    System.out.println(vlakNaam);
+                    //System.out.println(vlakNaam);
                     speler = labels.get(index + 10);
                     //System.out.println("index: " + index);
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
 
-                        System.out.println("index: " + (index + 10));
+                        //System.out.println("index: " + (index + 10));
 
                         speler.setIcon(getIcon());
                         leegVlak.setIcon(leegvlak.getIcon());
@@ -174,7 +169,7 @@ public class Speler {
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
 
-                        System.out.println("index: " + (index + 10));
+                        //System.out.println("index: " + (index + 10));
 
                         speler.setIcon(getIcon());
                         leegVlak.setIcon(leegvlak.getIcon());
@@ -226,20 +221,37 @@ public class Speler {
     }
 
     public static void showPopUp(){
-        KeyListener sListener = new MyKeyListener();
         JFrame sleutel = new JFrame("Sleutel");
         JPanel sPanel = new JPanel();
         JLabel sLabel = new JLabel("Wilt u de sleutel oppaken?");
-        JLabel sLabel2 = new JLabel("Ja: pijltje links, nee: pijltje rechts");
-        sPanel.addKeyListener(sListener);
+        JButton sButton = new JButton("Ja");
+        JButton sButton2 = new JButton("Nee");
         main.removeKeyListener();
         main.setFrameState(false);
         sPanel.add(sLabel);
-        sPanel.add(sLabel2);
+        sPanel.add(sButton);
+        sPanel.add(sButton2);
         sleutel.add(sPanel);
-        sleutel.setSize(250,250);
-        sleutel.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        sleutel.setSize(175,150);
+        sleutel.pack();
+        sleutel.setResizable(false);
+        sleutel.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        sleutel.setLocationRelativeTo(null);
         sleutel.setVisible(true);
+
+        sButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ja");
+            }
+        });
+
+        sButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Nee");
+            }
+        });
     }
 
     public boolean keuze(KeyEvent e){

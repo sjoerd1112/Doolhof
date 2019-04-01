@@ -25,7 +25,6 @@ public class MyKeyListener implements KeyListener {
     public void keyPressed(KeyEvent event) {
         if(event.getKeyCode()==37){
             speler.beweeg(event);
-            speler.keuze(event);
             //System.out.println("left");
         }
         else{
@@ -36,7 +35,6 @@ public class MyKeyListener implements KeyListener {
             else{
                 if(event.getKeyCode()==39){
                     speler.beweeg(event);
-                    speler.keuze(event);
                     //System.out.println("right");
                 }
                 else{
