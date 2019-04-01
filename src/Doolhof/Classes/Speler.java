@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +18,7 @@ public class Speler {
     private int positieY;
 
     private String naam; //nieuwe instance
-    private String inventory;
+    private int inventory;
 
     private Speelveld speelveld = new Speelveld(); //nieuwe constructor
     private ArrayList<Vlak> vlakken = speelveld.getVlakken(); //nieuwe instance
@@ -56,12 +55,8 @@ public class Speler {
         this.positieY = positieY;
     }
 
-    public String getInventory() {
+    public int getInventory() {
         return inventory;
-    }
-
-    public void setInventory(String inventory) {
-        this.inventory = inventory;
     }
 
     public void pakSleutel(){
@@ -245,7 +240,6 @@ public class Speler {
                 main.setKeyListener();
                 int index = ind;
                 Vlak naar = speelveld.getVlakken().get(index);
-                System.out.println(naar.getNaam());
                 if(naar.getNaam().equals("Sleutel")){
                     Sleutel waarde = (Sleutel) speelveld.getVlakken().get(index);
                     int x = index%10;
@@ -259,7 +253,7 @@ public class Speler {
                             sleutelWaarde = locatie[i][2];
                         }
                     }
-                    System.out.println(sleutelWaarde);
+                    inventory = sleutelWaarde;
                 }
                 speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                 JLabel leegVlak = labels.get(index);
