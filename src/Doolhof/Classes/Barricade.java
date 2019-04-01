@@ -24,10 +24,6 @@ public class Barricade extends Vlak{
         this.waarde = waarde;
     }
 
-    public void setIcon(ImageIcon icon) {
-        this.icon = icon;
-    }
-
     public Barricade(Point point, String naam) {
         super(point, naam);
     }
@@ -36,10 +32,6 @@ public class Barricade extends Vlak{
 
     public int[][] getLocatie() { //nieuwe methode
         return locatie;
-    }
-
-    public int getWaarde(int index) { //nieuwe methode
-        return locatie[index][2];
     }
 
     public ImageIcon getIcon() {
