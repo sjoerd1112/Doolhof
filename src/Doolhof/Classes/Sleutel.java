@@ -16,7 +16,15 @@ public class Sleutel extends Vlak{
 
     private ImageIcon icon;
 
+    private int waarde;
 
+    public void setWaarde(int waarde) {
+        this.waarde = waarde;
+    }
+
+    public int getWaarde() {
+        return waarde;
+    }
 
     private ImageIcon icon100 = new ImageIcon("key_100.png");
     private ImageIcon icon200 = new ImageIcon("key_200.png");
