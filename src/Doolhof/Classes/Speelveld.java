@@ -100,7 +100,7 @@ public class Speelveld {
 
         for (int i = 0; i < sleutel.getLocatie().length; i++) {
             index = (sleutel.getLocatie()[i][1] * 10) + (sleutel.getLocatie()[i][0]);
-            setVlak(index, new Sleutel(vlakken.get(index).getPoint(), "Sleutel")); //
+            setVlak(index, new Sleutel(vlakken.get(index).getPoint(), "Sleutel"));
         }
     }
 
@@ -150,9 +150,22 @@ public class Speelveld {
                     break;
                 case "Sleutel":
                     //label = new JLabel();//String.valueOf(sleutel.getWaarde(index_sleutel))
-                    label = new JLabel(sleutel.getIcon());
-                    panel.add(label);
-                    labels.add(i, label);
+                    /*for (int x = 0; x < sleutel.getLocatie().length; x++) {
+                        if (sleutel.getWaarde(x) == 100) {
+                            label = new JLabel(sleutel.getIcon100());
+                            panel.add(label);
+                            labels.add(i, label);
+                        } else if (sleutel.getWaarde(x) == 200) {
+                            label = new JLabel(sleutel.getIcon200());
+                            panel.add(label);
+                            labels.add(i, label);
+                        } else if (sleutel.getWaarde(x) == 300) {
+                            label = new JLabel(sleutel.getIcon300());
+                            panel.add(label);
+                            labels.add(i, label);
+                        }
+                    }*/
+
                     System.out.println("Index sleutel: " + i);
                     //panel.add(new JButton("Sleutel, " + sleutel.getWaarde(index_sleutel) + ""));
                     index_sleutel++;
