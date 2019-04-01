@@ -241,7 +241,6 @@ public class Speler {
                 int index = ind;
                 Vlak naar = speelveld.getVlakken().get(index);
                 if(naar.getNaam().equals("Sleutel")){
-                    Sleutel waarde = (Sleutel) speelveld.getVlakken().get(index);
                     int x = index%10;
                     int newIndex = index - (index%10);
                     int y = newIndex/10;
