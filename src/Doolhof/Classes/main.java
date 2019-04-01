@@ -38,19 +38,6 @@ public class main {
     public static void showPopUp(){
 
     }
-    public static void showVictoryPopUp()   {
-        final JFrame victory = new JFrame("Victory");
-        JPanel vPanel = new JPanel();
-        JButton vButton = new JButton("Je hebt gewonnen!");
-        vButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                victory.dispose();
-            }
-        });
-        victory.add(vPanel);
-        victory.add(vButton);
-    }
+
 
 }

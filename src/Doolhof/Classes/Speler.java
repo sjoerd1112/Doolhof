@@ -2,12 +2,13 @@ package Doolhof.Classes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import static Doolhof.Classes.main.showPopUp;
-import static Doolhof.Classes.main.showVictoryPopUp;
 
 /**
  * Created by sjoer on 13-3-2019.
@@ -102,7 +103,7 @@ public class Speler {
                         speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                         showPopUp();
-                    } else if(vlakNaam.equals("Eindveld"))  {
+                    } else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                     }
 
@@ -123,7 +124,7 @@ public class Speler {
                         speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                         showPopUp();
-                    }else if(vlakNaam.equals("Eindveld"))  {
+                    }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                     }
                     break;
@@ -143,7 +144,7 @@ public class Speler {
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                             showPopUp();
-                    }else if(vlakNaam.equals("Eindveld"))  {
+                    }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                     }
                     break;
@@ -164,8 +165,8 @@ public class Speler {
 
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                            showPopUp();
-                    }else if(vlakNaam.equals("Eindveld"))  {
+                        showPopUp();
+                    }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
                         System.out.println("hier");
                     }
@@ -217,4 +218,22 @@ public class Speler {
         showPopUp();
         return true;
     }
+
+    public static void showVictoryPopUp()   {
+        final JFrame victory = new JFrame("Victory");
+        JPanel vPanel = new JPanel();
+        JButton vButton = new JButton("Je hebt gewonnen!");
+        vButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                victory.dispose();
+            }
+        });
+        victory.add(vPanel);
+        vPanel.add(vButton);
+        victory.setVisible(true);
+        victory.setSize(250, 100);
+    }
+
 }

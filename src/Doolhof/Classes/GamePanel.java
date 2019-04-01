@@ -16,7 +16,7 @@ public class GamePanel {
             }
         });
         panel.add(restart);
-        JButton nieuwSpel = new JButton("Nieuw\nspel");
+        JButton nieuwSpel = new JButton("<html>" + "Nieuw" + "<br>" + "spel" + "</html>");
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -30,7 +30,7 @@ public class GamePanel {
         panel.add(sleutel);
 
         restart.setFont(new Font("Arial", Font.PLAIN, 11));
-        nieuwSpel.setFont(new Font("Arial", Font.PLAIN, 9));
+        nieuwSpel.setFont(new Font("Arial", Font.PLAIN, 11));
         inventory.setFont(new Font("Arial", Font.PLAIN, 11));
         sleutel.setFont(new Font("Arial", Font.PLAIN, 11));
         inventory.setHorizontalAlignment(JLabel.CENTER);
