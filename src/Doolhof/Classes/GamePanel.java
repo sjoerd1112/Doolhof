@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 
 public class GamePanel {
 
-    public GamePanel(JPanel panel)  {
+    private static JLabel sleutel = new JLabel("leeg");
+
+    public GamePanel(JPanel panel) {
         JButton restart = new JButton("Restart");
         restart.addActionListener(new ActionListener() {
             @Override
@@ -24,19 +26,20 @@ public class GamePanel {
             }
         });
         panel.add(nieuwSpel);
-        JLabel inventory = new JLabel("inventory:");
-        panel.add(inventory);
-        JLabel sleutel = new JLabel("leeg");
+        JLabel inventoryText = new JLabel("inventory:");
+        panel.add(inventoryText);
         panel.add(sleutel);
 
         restart.setFont(new Font("Arial", Font.PLAIN, 11));
         nieuwSpel.setFont(new Font("Arial", Font.PLAIN, 11));
-        inventory.setFont(new Font("Arial", Font.PLAIN, 11));
+        inventoryText.setFont(new Font("Arial", Font.PLAIN, 11));
         sleutel.setFont(new Font("Arial", Font.PLAIN, 11));
-        inventory.setHorizontalAlignment(JLabel.CENTER);
+        inventoryText.setHorizontalAlignment(JLabel.CENTER);
         sleutel.setHorizontalAlignment(JLabel.CENTER);
+    }
 
-
+    public static void setSleutelText(ImageIcon icon) {
+        GamePanel.sleutel.setIcon(icon);
     }
 
     public void nieuwSpel()    {

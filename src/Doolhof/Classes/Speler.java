@@ -286,6 +286,7 @@ public class Speler {
                     Sleutel sleutel = (Sleutel) speelveld.getVlakken().get(index);
                     int sleutelWaarde = sleutel.getWaarde();
                     inventory = sleutelWaarde;
+                    GamePanel.setSleutelText(sleutel.getIcon(sleutel.getWaarde()));
                     System.out.println(getInventory());
                 }
                 speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));

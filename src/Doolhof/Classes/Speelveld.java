@@ -152,11 +152,11 @@ public class Speelveld {
                     label = new JLabel();
                     Sleutel sleutel = (Sleutel) vlakken.get(i);
                     if (sleutel.getWaarde() == 100) {
-                        label = new JLabel(sleutel.getIcon100());
+                        label = new JLabel(sleutel.getIcon(100));
                     } else if (sleutel.getWaarde() == 200) {
-                        label = new JLabel(sleutel.getIcon200());
+                        label = new JLabel(sleutel.getIcon(200));
                     } else if (sleutel.getWaarde() == 300) {
-                        label = new JLabel(sleutel.getIcon300());
+                        label = new JLabel(sleutel.getIcon(300));
                     }
                     System.out.println("Waarde sleutel: "+sleutel.getWaarde());
                     panel.add(label);

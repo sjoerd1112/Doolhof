@@ -14,6 +14,8 @@ public class Sleutel extends Vlak{
 
     private static final int[][] locatie = { {1, 4, 300}, {2, 2, 200}, {5, 8, 100}}; //nieuwe array
 
+    private ImageIcon icon;
+
     private int waarde;
 
     public void setWaarde(int waarde) {
@@ -38,15 +40,14 @@ public class Sleutel extends Vlak{
         return locatie;
     }
 
-    public ImageIcon getIcon100() {
-        return icon100;
-    }
 
-    public ImageIcon getIcon200() {
-        return icon200;
-    }
-
-    public ImageIcon getIcon300() {
-        return icon300;
+    public ImageIcon getIcon(int waarde) {
+        if (waarde == 100) {
+            return icon100;
+        } else if (waarde == 200) {
+            return icon200;
+        } else  {
+            return icon300;
+        }
     }
 }
