@@ -16,7 +16,7 @@ public class GamePanel {
             }
         });
         panel.add(restart);
-        JButton nieuwSpel = new JButton("Nieuw spel");
+        JButton nieuwSpel = new JButton("Nieuw\nspel");
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -24,6 +24,19 @@ public class GamePanel {
             }
         });
         panel.add(nieuwSpel);
+        JLabel inventory = new JLabel("inventory:");
+        panel.add(inventory);
+        JLabel sleutel = new JLabel("leeg");
+        panel.add(sleutel);
+
+        restart.setFont(new Font("Arial", Font.PLAIN, 11));
+        nieuwSpel.setFont(new Font("Arial", Font.PLAIN, 9));
+        inventory.setFont(new Font("Arial", Font.PLAIN, 11));
+        sleutel.setFont(new Font("Arial", Font.PLAIN, 11));
+        inventory.setHorizontalAlignment(JLabel.CENTER);
+        sleutel.setHorizontalAlignment(JLabel.CENTER);
+
+
     }
 
     public void nieuwSpel()    {
