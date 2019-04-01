@@ -37,6 +37,8 @@ public class Speler {
 
     }
 
+    public String getNaam() { return naam; }
+
     public int getPositieX() {
         return positieX;
     }
@@ -57,12 +59,7 @@ public class Speler {
         return inventory;
     }
 
-    public void pakSleutel(){
-
-    }
-
     public ImageIcon getIcon() {
-        //icon = new ImageIcon(icon.getImage().getScaledInstance(60, 60, BufferedImage.SCALE_SMOOTH));
         return icon;
     }
 
@@ -84,8 +81,6 @@ public class Speler {
                     vlak = vlakken.get((x - 1 + y*10));
                     vlakNaam = vlak.getNaam();
                     speler = labels.get(index - 1);
-                    //System.out.println(vlakNaam);
-                    //System.out.println(index);
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
@@ -93,14 +88,14 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                        showPopUp(index-1);
+                        pakSleutel(index-1);
                     } else if(vlakNaam.equals("EindVeld"))  {
-                        showVictoryPopUp();
                         setPositieX((x - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                         speler.setIcon(getIcon()); //veranderd foto
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
+                        showVictoryPopUp();
                     } else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
                         if(barricade.getWaarde() == inventory){
@@ -116,9 +111,7 @@ public class Speler {
                 case 39: //right
                     vlak = vlakken.get((x + 1 + y*10));
                     vlakNaam = vlak.getNaam();
-                    //System.out.println(vlakNaam);
                     speler = labels.get(index + 1);
-                    //System.out.println("index: " + index);
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
@@ -126,14 +119,14 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                        showPopUp(index+1);
+                        pakSleutel(index+1);
                     }else if(vlakNaam.equals("EindVeld"))  {
-                        showVictoryPopUp();
                         setPositieX((x + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                         speler.setIcon(getIcon()); //veranderd foto
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
+                        showVictoryPopUp();
                     }else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
                         if(barricade.getWaarde() == inventory) {
@@ -148,9 +141,7 @@ public class Speler {
                 case 38: //up
                     vlak = vlakken.get(((y - 1)*10 + x));
                     vlakNaam = vlak.getNaam();
-                    //System.out.println(vlakNaam);
                     speler = labels.get(index - 10);
-                    //System.out.println("index: " + index);
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
@@ -158,14 +149,14 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                            showPopUp(index-10);
+                        pakSleutel(index-10);
                     }else if(vlakNaam.equals("EindVeld"))  {
-                        showVictoryPopUp();
                         setPositieY((y - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                         speler.setIcon(getIcon()); //veranderd foto
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
+                        showVictoryPopUp();
                     }else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
                         if(barricade.getWaarde() == inventory) {
@@ -180,9 +171,7 @@ public class Speler {
                 case 40: //down
                     vlak = vlakken.get(((y + 1)*10 + x));
                     vlakNaam = vlak.getNaam();
-                    //System.out.println(vlakNaam);
                     speler = labels.get(index + 10);
-                    //System.out.println("index: " + index);
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
@@ -190,14 +179,14 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                            showPopUp(index+10);
+                        pakSleutel(index+10);
                     }else if(vlakNaam.equals("EindVeld"))  {
-                        showVictoryPopUp();
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                         speler.setIcon(getIcon());
                         leegVlak.setIcon(leegvlak.getIcon());
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
+                        showVictoryPopUp();
                     }else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
                         if(barricade.getWaarde() == inventory) {
@@ -218,7 +207,7 @@ public class Speler {
         }
     }
 
-    private boolean validMovement(KeyEvent event) { //nieuwe methode (werkt naar behoren)
+    public boolean validMovement(KeyEvent event) { //nieuwe methode (werkt naar behoren)
         int code = event.getKeyCode();
         int x = getPositieX();
         int y = getPositieY();
@@ -251,37 +240,20 @@ public class Speler {
         return false;
     }
 
-    public void showPopUp(final int ind){
-        final JFrame sleutel = new JFrame("Sleutel");
-        JPanel sPanel = new JPanel();
-        JLabel sLabel = new JLabel("Wilt u de sleutel oppaken?");
-        JButton sButton = new JButton("Ja");
-        JButton sButton2 = new JButton("Nee");
-        main.removeKeyListener();
-        main.setFrameState(false);
-        sPanel.add(sLabel);
-        sPanel.add(sButton);
-        sPanel.add(sButton2);
-        sleutel.add(sPanel);
-        sleutel.setSize(175,150);
-        sleutel.pack();
-        sleutel.setResizable(false);
-        sleutel.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        sleutel.setLocationRelativeTo(null);
-        sleutel.setVisible(true);
+    public void pakSleutel(final int index){
+        JButton[] button = new JButton[2];
+        button[0] = new JButton("Ja");
+        button[1] = new JButton("Nee");
 
-        sButton.addActionListener(new ActionListener() {
+        button[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sleutel.dispose();
-                main.setFrameState(true);
-                main.setKeyListener();
-                int index = ind;
+                JOptionPane.getRootFrame().dispose();
                 Vlak naar = speelveld.getVlakken().get(index);
+
                 if(naar.getNaam().equals("Sleutel")){
                     Sleutel sleutel = (Sleutel) speelveld.getVlakken().get(index);
-                    int sleutelWaarde = sleutel.getWaarde();
-                    inventory = sleutelWaarde;
+                    inventory = sleutel.getWaarde();
                     GamePanel.setSleutelText(sleutel.getIcon(sleutel.getWaarde()));
                     System.out.println(getInventory());
                 }
@@ -291,31 +263,34 @@ public class Speler {
             }
         });
 
-        sButton2.addActionListener(new ActionListener() {
+        button[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sleutel.dispose();
-                main.setFrameState(true);
-                main.setKeyListener();
+                JOptionPane.getRootFrame().dispose();
             }
         });
+
+        JOptionPane.showOptionDialog(null, "Wilt u de sleutel oppakken?", "Sleutel",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, button, null);
+
+        //bron: https://stackoverflow.com/questions/13334198/java-custom-buttons-in-showinputdialog
     }
 
-    public static void showVictoryPopUp()   {
-        final JFrame victory = new JFrame("Victory");
-        JPanel vPanel = new JPanel();
-        JButton vButton = new JButton("Je hebt gewonnen!");
-        vButton.addActionListener(new ActionListener() {
+    public void showVictoryPopUp()   {
+        JButton[] options = new JButton[2];
+        options[0] = new JButton("Ok");
+        options[1] = new JButton("Start opnieuw");
+
+        options[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                victory.dispose();
+                JOptionPane.getRootFrame().dispose();
             }
         });
-        victory.add(vPanel);
-        vPanel.add(vButton);
-        victory.setLocationRelativeTo(null);
-        victory.setVisible(true);
-        victory.setSize(250, 100);
+
+        JOptionPane.showOptionDialog(null, "Je hebt gewonnen!", "Victory", JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, new ImageIcon("victory.jpg"), options, null);
+
     }
 }

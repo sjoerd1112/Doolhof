@@ -82,8 +82,6 @@ public class Speelveld {
         setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //leegVlak, want speler 'staat' op leegVlak
         //Speler is GEEN statisch object van het superklasse Vlak.
         //setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //tijdelijk gebruikt voor test doeleinden
-        System.out.println(speler);
-        System.out.println("coordinates Player: " + vlakken.get(0).getPoint());
     }
 
     private void initializeBarricades() { //nieuwe methode
@@ -125,6 +123,7 @@ public class Speelveld {
         int index_barricade = 0;
         int index_sleutel = 0;
         JLabel label;
+
         for (int i = 0; i < vlakken.size(); i++) {
             String naam = vlakken.get(i).getNaam();
             switch(naam) {
@@ -132,7 +131,6 @@ public class Speelveld {
                     label = new JLabel(leegvlak.getIcon());
                     panel.add(label);
                     labels.add(i, label);
-                    System.out.println("Index leegvlak: " + i);
                     break;
                 case "Speler":
                     label = new JLabel(speler.getIcon());
@@ -186,7 +184,6 @@ public class Speelveld {
                     break;
             }
         }
-        System.out.println("Labels size: " + labels.size());
     }
 
 

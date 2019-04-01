@@ -8,13 +8,11 @@ import java.awt.*;
 public class main {
 
     private static JPanel panel; //nieuwe instance
-    private static KeyListener listener;
-    private static JFrame frame;
 
     public static void main (String[] args) { //nieuwe methode
-        frame = new JFrame("Doolhof");
+        JFrame frame = new JFrame("Doolhof");
         panel = new JPanel(new GridLayout(11, 10));
-        listener = new MyKeyListener();
+        KeyListener listener = new MyKeyListener();
 
 
         new Speelveld(panel);
@@ -36,15 +34,4 @@ public class main {
         return panel;
     }
 
-    public static void setFrameState(boolean state){
-        frame.setEnabled(state);
-    }
-
-    public static void setKeyListener(){
-        panel.addKeyListener(listener);
-    }
-
-    public static void removeKeyListener(){
-        panel.removeKeyListener(listener);
-    }
 }

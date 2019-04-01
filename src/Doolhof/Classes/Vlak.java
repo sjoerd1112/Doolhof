@@ -24,14 +24,8 @@ public class Vlak {
         return point;
     }
 
-    public void setPoint(Point point) {
-        this.point = point;
-    }
-
     public String getNaam() {
         return naam;
     }
-
-    public String setNaam(String name) { return naam = name; } //nieuwe methode
 
 }
