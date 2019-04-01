@@ -14,8 +14,6 @@ public class Sleutel extends Vlak{
 
     private static final int[][] locatie = { {1, 4, 300}, {2, 2, 200}, {5, 8, 100}}; //nieuwe array
 
-    private ImageIcon icon;
-
     private int waarde;
 
     public void setWaarde(int waarde) {
@@ -38,10 +36,6 @@ public class Sleutel extends Vlak{
 
     public static int[][] getLocatie() { //nieuwe methode
         return locatie;
-    }
-
-    public static int getWaarde(int index) { //nieuwe methode
-        return locatie[index][2];
     }
 
     public ImageIcon getIcon100() {

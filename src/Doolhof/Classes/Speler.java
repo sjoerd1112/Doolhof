@@ -100,6 +100,17 @@ public class Speler {
                         showPopUp(index-1);
                     } else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
+                    } else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory){
+                            setPositieX((x - 1));
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                            speler.setIcon(getIcon()); //veranderd foto
+                            leegVlak.setIcon(leegvlak.getIcon());
+
+                            speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
+                        }
                     }
 
                     break;
@@ -121,6 +132,17 @@ public class Speler {
                         showPopUp(index+1);
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
+                    }else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory) {
+                            setPositieX((x + 1));
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                            speler.setIcon(getIcon()); //veranderd foto
+                            leegVlak.setIcon(leegvlak.getIcon());
+
+                            speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
+                        }
                     }
                     break;
                 case 38: //up
@@ -141,6 +163,17 @@ public class Speler {
                             showPopUp(index-10);
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
+                    }else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory) {
+                            setPositieY((y - 1));
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                            speler.setIcon(getIcon()); //veranderd foto
+                            leegVlak.setIcon(leegvlak.getIcon());
+
+                            speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
+                        }
                     }
                     break;
                 case 40: //down
@@ -167,6 +200,16 @@ public class Speler {
                         leegVlak.setIcon(leegvlak.getIcon());
 
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
+                    }else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory) {
+                            setPositieY((y + 1));
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                            speler.setIcon(getIcon());
+                            leegVlak.setIcon(leegvlak.getIcon());
+
+                            speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
+                        }
                     }
                     break;
             }
@@ -242,17 +285,6 @@ public class Speler {
                 if(naar.getNaam().equals("Sleutel")){
                     Sleutel sleutel = (Sleutel) speelveld.getVlakken().get(index);
                     int sleutelWaarde = sleutel.getWaarde();
-                    /*int x = index%10;
-                    int newIndex = index - (index%10);
-                    int y = newIndex/10;
-
-                    int sleutelWaarde = 0;
-                    int[][] locatie = Sleutel.getLocatie();
-                    for(int i = 0; i<locatie.length;i++){
-                        if(locatie[i][0]==x && locatie[i][1] == y){
-                            sleutelWaarde = locatie[i][2];
-                        }
-                    }*/
                     inventory = sleutelWaarde;
                     System.out.println(getInventory());
                 }

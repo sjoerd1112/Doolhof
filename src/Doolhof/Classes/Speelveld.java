@@ -91,7 +91,9 @@ public class Speelveld {
 
         for (int i = 0; i < barricade.getLocatie().length; i++) {
             index = (barricade.getLocatie()[i][1] * 10) + (barricade.getLocatie()[i][0]);
-            setVlak(index, new Barricade(vlakken.get(index).getPoint(), "Barricade"));
+            Barricade barricade = new Barricade(vlakken.get(index).getPoint(), "Barricade");
+            barricade.setWaarde(barricade.getLocatie()[i][2]);
+            setVlak(index, barricade);
         }
     }
 
