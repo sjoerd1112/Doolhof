@@ -127,7 +127,6 @@ public class Speelveld {
             String naam = vlakken.get(i).getNaam();
             switch(naam) {
                 case "LeegVlak":
-                    //panel.add(new JButton("X: " + vlakken.get(i).getPoint().getX() + " Y: " + vlakken.get(i).getPoint().getY()));
                     label = new JLabel(leegvlak.getIcon());
                     panel.add(label);
                     labels.add(i, label);
@@ -140,9 +139,6 @@ public class Speelveld {
                     System.out.println("Index speler: " + i);
                     break;
                 case "Barricade":
-                    //panel.add(new JButton("Barricade, " + barricade.getWaarde(index_barricade)));
-
-                    //label = new JLabel(); //String.valueOf(barricade.getWaarde(index_barricade))
                     label = new JLabel(barricade.getIcon());
                     panel.add(label);
                     labels.add(i, label);
@@ -151,25 +147,19 @@ public class Speelveld {
                     index_barricade++;
                     break;
                 case "Sleutel":
-                    //label = new JLabel();//String.valueOf(sleutel.getWaarde(index_sleutel))
-                    for (int x = 0; x < sleutel.getLocatie().length; x++) {
-                        if (sleutel.getWaarde(x) == 100) {
-                            label = new JLabel(sleutel.getIcon100());
-                            panel.add(label);
-                            labels.add(i, label);
-                        } else if (sleutel.getWaarde(x) == 200) {
-                            label = new JLabel(sleutel.getIcon200());
-                            panel.add(label);
-                            labels.add(i, label);
-                        } else if (sleutel.getWaarde(x) == 300) {
-                            label = new JLabel(sleutel.getIcon300());
-                            panel.add(label);
-                            labels.add(i, label);
-                        }
+                    label = new JLabel();
+                    Sleutel sleutel = (Sleutel) vlakken.get(i);
+                    if (sleutel.getWaarde() == 100) {
+                        label = new JLabel(sleutel.getIcon100());
+                    } else if (sleutel.getWaarde() == 200) {
+                        label = new JLabel(sleutel.getIcon200());
+                    } else if (sleutel.getWaarde() == 300) {
+                        label = new JLabel(sleutel.getIcon300());
                     }
-
+                    System.out.println("Waarde sleutel: "+sleutel.getWaarde());
+                    panel.add(label);
+                    labels.add(i, label);
                     System.out.println("Index sleutel: " + i);
-                    //panel.add(new JButton("Sleutel, " + sleutel.getWaarde(index_sleutel) + ""));
                     index_sleutel++;
                     break;
                 case "Muur":

@@ -234,14 +234,15 @@ public class Speler {
         sButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ja");
                 sleutel.dispose();
                 main.setFrameState(true);
                 main.setKeyListener();
                 int index = ind;
                 Vlak naar = speelveld.getVlakken().get(index);
                 if(naar.getNaam().equals("Sleutel")){
-                    int x = index%10;
+                    Sleutel sleutel = (Sleutel) speelveld.getVlakken().get(index);
+                    int sleutelWaarde = sleutel.getWaarde();
+                    /*int x = index%10;
                     int newIndex = index - (index%10);
                     int y = newIndex/10;
 
@@ -251,8 +252,9 @@ public class Speler {
                         if(locatie[i][0]==x && locatie[i][1] == y){
                             sleutelWaarde = locatie[i][2];
                         }
-                    }
+                    }*/
                     inventory = sleutelWaarde;
+                    System.out.println(getInventory());
                 }
                 speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                 JLabel leegVlak = labels.get(index);
@@ -263,16 +265,11 @@ public class Speler {
         sButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Nee");
                 sleutel.dispose();
                 main.setFrameState(true);
                 main.setKeyListener();
             }
         });
-    }
-
-    public boolean keuze(KeyEvent e){
-        return true;
     }
 
     public static void showVictoryPopUp()   {
