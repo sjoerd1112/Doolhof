@@ -141,7 +141,15 @@ public class Speelveld {
                     System.out.println("Index speler: " + i);
                     break;
                 case "Barricade":
-                    label = new JLabel(barricade.getIcon());
+                    label = new JLabel();
+                    Barricade barricade = (Barricade) vlakken.get(i);
+                    if (barricade.getWaarde() == 100) {
+                        label = new JLabel(barricade.getIcon(100));
+                    } else if (barricade.getWaarde() == 200) {
+                        label = new JLabel(barricade.getIcon(200));
+                    } else if (barricade.getWaarde() == 300) {
+                        label = new JLabel(barricade.getIcon(300));
+                    }
                     panel.add(label);
                     labels.add(i, label);
                     System.out.println("Index barricade: " + i);
