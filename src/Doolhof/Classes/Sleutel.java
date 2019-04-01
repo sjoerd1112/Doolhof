@@ -2,9 +2,6 @@ package Doolhof.Classes;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import javax.swing.border.Border;
-import javax.swing.BorderFactory;
 
 
 /**

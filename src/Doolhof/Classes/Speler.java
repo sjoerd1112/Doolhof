@@ -1,7 +1,5 @@
 package Doolhof.Classes;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -91,24 +89,25 @@ public class Speler {
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
                         speler.setIcon(getIcon()); //veranderd foto
                         leegVlak.setIcon(leegvlak.getIcon());
-
                         speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                         showPopUp(index-1);
                     } else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
+                        setPositieX((x - 1));
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
                         if(barricade.getWaarde() == inventory){
                             setPositieX((x - 1));
                             speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
                             speler.setIcon(getIcon()); //veranderd foto
                             leegVlak.setIcon(leegvlak.getIcon());
-
                             speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                         }
                     }
@@ -123,24 +122,25 @@ public class Speler {
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
                         speler.setIcon(getIcon()); //veranderd foto
                         leegVlak.setIcon(leegvlak.getIcon());
-
                         speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                         showPopUp(index+1);
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
+                        setPositieX((x + 1));
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                     }else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
                         if(barricade.getWaarde() == inventory) {
                             setPositieX((x + 1));
                             speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
                             speler.setIcon(getIcon()); //veranderd foto
                             leegVlak.setIcon(leegvlak.getIcon());
-
                             speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                         }
                     }
@@ -154,24 +154,25 @@ public class Speler {
                     if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y - 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
                         speler.setIcon(getIcon()); //veranderd foto
                         leegVlak.setIcon(leegvlak.getIcon());
-
                         speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                             showPopUp(index-10);
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
+                        setPositieY((y - 1));
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                     }else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
                         if(barricade.getWaarde() == inventory) {
                             setPositieY((y - 1));
                             speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
                             speler.setIcon(getIcon()); //veranderd foto
                             leegVlak.setIcon(leegvlak.getIcon());
-
                             speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                         }
                     }
@@ -187,7 +188,6 @@ public class Speler {
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                         speler.setIcon(getIcon());
                         leegVlak.setIcon(leegvlak.getIcon());
-
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
                             showPopUp(index+10);
@@ -195,10 +195,8 @@ public class Speler {
                         showVictoryPopUp();
                         setPositieY((y + 1));
                         speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
-
                         speler.setIcon(getIcon());
                         leegVlak.setIcon(leegvlak.getIcon());
-
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     }else if(vlakNaam.equals("Barricade")){
                         Barricade barricade = (Barricade) vlak;
@@ -207,7 +205,6 @@ public class Speler {
                             speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                             speler.setIcon(getIcon());
                             leegVlak.setIcon(leegvlak.getIcon());
-
                             speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                         }
                     }
@@ -215,7 +212,6 @@ public class Speler {
             }
             System.out.println("Positie x: " + getPositieX());
             System.out.println("Positie y: " + getPositieY());
-            System.out.println("Movement positive");
             System.out.println();
         } else {
             System.out.println("Movement negative");
@@ -318,8 +314,8 @@ public class Speler {
         });
         victory.add(vPanel);
         vPanel.add(vButton);
+        victory.setLocationRelativeTo(null);
         victory.setVisible(true);
         victory.setSize(250, 100);
     }
-
 }
