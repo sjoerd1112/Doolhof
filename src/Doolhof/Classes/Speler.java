@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import static Doolhof.Classes.main.showPopUp;
+import static Doolhof.Classes.main.getFrameState;
 
 /**
  * Created by sjoer on 13-3-2019.
@@ -74,6 +74,9 @@ public class Speler {
     }
 
     public void beweeg(KeyEvent event){
+        if(getFrameState() == false){
+            System.out.println(event.getKeyChar());
+        }
         if (validMovement(event)) {
             JLabel speler;
             JLabel leegVlak;
@@ -165,10 +168,18 @@ public class Speler {
 
                         speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     } else if(vlakNaam.equals("Sleutel")){
-                        showPopUp();
+                            showPopUp();
                     }else if(vlakNaam.equals("EindVeld"))  {
                         showVictoryPopUp();
-                        System.out.println("hier");
+                        setPositieY((y + 1));
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+
+                        System.out.println("index: " + (index + 10));
+
+                        speler.setIcon(getIcon());
+                        leegVlak.setIcon(leegvlak.getIcon());
+
+                        speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                     }
                     break;
             }
@@ -214,8 +225,24 @@ public class Speler {
         return false;
     }
 
-    private boolean pickup(){
-        showPopUp();
+    public static void showPopUp(){
+        KeyListener sListener = new MyKeyListener();
+        JFrame sleutel = new JFrame("Sleutel");
+        JPanel sPanel = new JPanel();
+        JLabel sLabel = new JLabel("Wilt u de sleutel oppaken?");
+        JLabel sLabel2 = new JLabel("Ja: pijltje links, nee: pijltje rechts");
+        sPanel.addKeyListener(sListener);
+        main.removeKeyListener();
+        main.setFrameState(false);
+        sPanel.add(sLabel);
+        sPanel.add(sLabel2);
+        sleutel.add(sPanel);
+        sleutel.setSize(250,250);
+        sleutel.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        sleutel.setVisible(true);
+    }
+
+    public boolean keuze(KeyEvent e){
         return true;
     }
 

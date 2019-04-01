@@ -10,11 +10,13 @@ import java.awt.event.ActionListener;
 public class main {
 
     private static JPanel panel; //nieuwe instance
+    private static KeyListener listener;
+    private static JFrame frame;
 
     public static void main (String[] args) { //nieuwe methode
-        JFrame frame = new JFrame("Doolhof");
+        frame = new JFrame("Doolhof");
         panel = new JPanel(new GridLayout(11, 10));
-        KeyListener listener = new MyKeyListener();
+        listener = new MyKeyListener();
 
 
         new Speelveld(panel);
@@ -35,9 +37,19 @@ public class main {
         return panel;
     }
 
-    public static void showPopUp(){
-
+    public static void setFrameState(boolean state){
+        frame.setEnabled(state);
     }
 
+    public static boolean getFrameState(){
+        return frame.isEnabled();
+    }
 
+    public static void setKeyListener(){
+        panel.addKeyListener(listener);
+    }
+
+    public static void removeKeyListener(){
+        panel.removeKeyListener(listener);
+    }
 }
