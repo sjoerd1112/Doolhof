@@ -28,23 +28,11 @@ public class Speelveld {
         startDoolHof(panel, 1);
     }
 
-    public Speelveld() { //nieuwe instance
-
-    }
-
-    public void startOpnieuw(int level) {
+    public Speelveld() { //nieuwe instanc {
     }
 
     public void setVlak(int index, Vlak vlak) { //nieuwe methode
         vlakken.set(index, vlak);
-    }
-
-    public void setLabel(JPanel panel, int index_van, int index_naar, JLabel van, JLabel naar) {
-        labels.set(index_van, van);
-        labels.set(index_naar, naar);
-
-        panel.revalidate();
-        panel.repaint();
     }
 
     public ArrayList<Vlak> getVlakken() {
@@ -131,6 +119,7 @@ public class Speelveld {
                     label = new JLabel(leegvlak.getIcon());
                     panel.add(label);
                     labels.add(i, label);
+                    System.out.println("Index LeegVlak: " + i);
                     break;
                 case "Speler":
                     label = new JLabel(speler.getIcon());

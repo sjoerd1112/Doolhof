@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
  */
 public class MyKeyListener implements KeyListener {
 
-    Speler speler = new Speler(); //nieuwe instance
+    private Speler speler = new Speler(); //nieuwe instance
 
     @Override
     public void keyTyped(KeyEvent event) {
@@ -23,30 +23,14 @@ public class MyKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent event) {
-        if(event.getKeyCode()==37){
-            speler.beweeg(event);
-        }
-        else{
-            if(event.getKeyCode()==38){
+        int code = event.getKeyCode();
+        switch (code) {
+            case 37: //left
+            case 38: //up
+            case 39: //right
+            case 40: //down
                 speler.beweeg(event);
-            }
-            else{
-                if(event.getKeyCode()==39){
-                    speler.beweeg(event);
-                }
-                else{
-                    if(event.getKeyCode()==40){
-                        speler.beweeg(event);
-                    }
-                    else{
-                        if(event.getKeyCode()==32){
-                        }
-                        else{
-                            //System.out.println(event.getKeyChar());
-                        }
-                    }
-                }
-            }
+                break;
         }
     }
 }
