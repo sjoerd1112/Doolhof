@@ -218,7 +218,7 @@ public class Speler {
                 JOptionPane.getRootFrame().dispose();
 
                 Sleutel sleutel = (Sleutel) speelveld.getVlakken().get(index);
-                inventory = sleutel.getWaarde();
+                setInventory(sleutel.getWaarde());
                 GamePanel.setSleutelText(sleutel.getIcon(sleutel.getWaarde()));
 
                 speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
