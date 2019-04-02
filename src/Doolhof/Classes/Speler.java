@@ -106,7 +106,6 @@ public class Speler {
                             speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                         }
                     }
-
                     break;
                 case 39: //right
                     vlak = vlakken.get((x + 1 + y*10));

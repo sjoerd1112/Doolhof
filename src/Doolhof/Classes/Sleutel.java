@@ -9,7 +9,7 @@ import java.awt.*;
  */
 public class Sleutel extends Vlak{
 
-    private final int[][] locatie = { {1, 4, 300}, {2, 2, 200}, {5, 8, 100}}; //nieuwe array
+    private final int[][] locatie = {{2, 2, 300}, {6,2,100}, {2,8,300}, {6,4,100}   }; //nieuwe array
 
     private ImageIcon icon;
 
