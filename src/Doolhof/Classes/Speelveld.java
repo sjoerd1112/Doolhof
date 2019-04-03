@@ -36,6 +36,7 @@ public class Speelveld {
 
     public static void nieuwSpel(int level){
         vlakken.clear();
+        labels.clear();
         main.clearPanel();
         startDoolHof(main.getPanel(),level);
         new GamePanel(main.getPanel());
@@ -51,14 +52,6 @@ public class Speelveld {
 
     public static void setVlak(int index, Vlak vlak) { //nieuwe methode
         vlakken.set(index, vlak);
-    }
-
-    public void setLabel(JPanel panel, int index_van, int index_naar, JLabel van, JLabel naar) {
-        labels.set(index_van, van);
-        labels.set(index_naar, naar);
-
-        panel.revalidate();
-        panel.repaint();
     }
 
     public static ArrayList<Vlak> getVlakken() {

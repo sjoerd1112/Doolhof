@@ -45,11 +45,11 @@ public class GamePanel {
         GamePanel.sleutel.setIcon(icon);
     }
 
-    public void nieuwSpel()    {
+    /*public void nieuwSpel()    {
         Speelveld.startDoolHof(main.getPanel(),-1);
         ArrayList<Vlak> vlakken = Speelveld.getVlakken();
         System.out.println(vlakken.get(100));
-    }
+    }*/
 
     public void opnieuwStarten()    {
         levels.getLevel(Speelveld.getLevel());
