@@ -1,4 +1,4 @@
-package Doolhof.Classes;
+/*package Doolhof.Classes;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -8,9 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-/**
- * @author Timothy
- */
+
 class SpeelveldTest {
 
     private static Speelveld speelveld;
@@ -67,4 +65,4 @@ class SpeelveldTest {
         }
         assertEquals(3, barricades);
     }
-}
+}*/
