@@ -31,12 +31,14 @@ public class Speelveld {
     }
 
     public static void startOpnieuw(int level) {
-        startDoolHof(main.getPanel(), level);
+        vlakken.clear();
+        main.clearPanel();
+        startDoolHof(main.getPanel(),level);
+        new GamePanel(main.getPanel());
     }
 
     public static void nieuwSpel(int level){
         vlakken.clear();
-        labels.clear();
         main.clearPanel();
         startDoolHof(main.getPanel(),level);
         new GamePanel(main.getPanel());

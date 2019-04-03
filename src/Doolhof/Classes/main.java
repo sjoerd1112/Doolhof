@@ -15,7 +15,6 @@ public class main {
         panel = new JPanel(new GridLayout(11, 10));
         listener = new MyKeyListener();
 
-
         new Speelveld(panel);
         new GamePanel(panel);
 

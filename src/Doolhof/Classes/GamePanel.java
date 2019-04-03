@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class GamePanel {
 
@@ -16,7 +14,7 @@ public class GamePanel {
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                opnieuwStarten();
+                Speelveld.startOpnieuw(Speelveld.getLevel());
             }
         });
         panel.add(restart);
@@ -24,7 +22,6 @@ public class GamePanel {
         nieuwSpel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //nieuwSpel();
                 Speelveld.nieuwSpel(-1);
             }
         });
@@ -43,15 +40,5 @@ public class GamePanel {
 
     public static void setSleutelText(ImageIcon icon) {
         GamePanel.sleutel.setIcon(icon);
-    }
-
-    /*public void nieuwSpel()    {
-        Speelveld.startDoolHof(main.getPanel(),-1);
-        ArrayList<Vlak> vlakken = Speelveld.getVlakken();
-        System.out.println(vlakken.get(100));
-    }*/
-
-    public void opnieuwStarten()    {
-        levels.getLevel(Speelveld.getLevel());
     }
 }
