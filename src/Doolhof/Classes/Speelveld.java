@@ -38,6 +38,10 @@ public class Speelveld {
         return level;
     }
 
+    public static void setLevel(int lvl){
+        level = lvl;
+    }
+
     public static void setVlak(int index, Vlak vlak) { //nieuwe methode
         vlakken.set(index, vlak);
     }
@@ -82,8 +86,9 @@ public class Speelveld {
     }
 
     private static void initializeSpeler(JPanel panel) { //nieuwe methode
-        speler = new Speler(vlakken.get(0).getPoint(), "Speler"); //0 = start positie, correcte code --> Associatie met Speelveld.
-        setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //leegVlak, want speler 'staat' op leegVlak
+        int index = (Speler.getLocatie()[0])+(Speler.getLocatie()[1]*10);
+        speler = new Speler(vlakken.get(index).getPoint(), "Speler"); //0 = start positie, correcte code --> Associatie met Speelveld.
+        setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "Speler")); //leegVlak, want speler 'staat' op leegVlak
         //Speler is GEEN statisch object van het superklasse Vlak.
         //setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //tijdelijk gebruikt voor test doeleinden
     }
@@ -120,12 +125,11 @@ public class Speelveld {
     }
 
     private static void initializeEindVeld() { //nieuwe methode
-        setVlak(99, new Eindveld(vlakken.get(99).getPoint(), "EindVeld"));
+        int index = (Eindveld.getLocatie()[0])+(Eindveld.getLocatie()[1]*10);
+        setVlak(index, new Eindveld(vlakken.get(index).getPoint(), "EindVeld"));
     }
 
     private static void loadImages(JPanel panel) { //nieuwe methode
-        int index_barricade = 0;
-        int index_sleutel = 0;
         JLabel label;
 
         for (int i = 0; i < vlakken.size(); i++) {
@@ -155,8 +159,6 @@ public class Speelveld {
                     panel.add(label);
                     labels.add(i, label);
                     System.out.println("Index barricade: " + i);
-
-                    index_barricade++;
                     break;
                 case "Sleutel":
                     label = new JLabel();
@@ -172,7 +174,6 @@ public class Speelveld {
                     panel.add(label);
                     labels.add(i, label);
                     System.out.println("Index sleutel: " + i);
-                    index_sleutel++;
                     break;
                 case "Muur":
                     label = new JLabel(muur.getIcon());

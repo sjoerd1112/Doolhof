@@ -1,7 +1,5 @@
 package Doolhof.Classes;
 
-import java.util.ArrayList;
-
 /**
  * Created by sjoer on 2-4-2019.
  */
@@ -34,6 +32,20 @@ public class levels {
         return muren[index];
     }
 
+    public static int[] speler(int index){
+        int[][] speler = {
+                {0,0}
+        };
+        return speler[index];
+    }
+
+    public static int[] eindveld(int index){
+        int[][] eindveld = {
+                {9,9}
+        };
+        return eindveld[index];
+    }
+
     public static void getLevel(){
         int[] levelId = {1};
         int randomInt = (int) Math.random()*(levelId.length-1);
@@ -43,10 +55,26 @@ public class levels {
         Barricade.setLocatie(barricadeArray);
         int[][] murenArray = muren(randomInt);
         Muur.setLocatie(murenArray);
+        int[] spelerArray = speler(randomInt);
+        Speler.setLocatie(spelerArray);
+        int[] eindveldArray = eindveld(randomInt);
+        Eindveld.setLocatie(eindveldArray);
+        Speelveld.setLevel(randomInt);
         System.out.println("Klaar met laden level");
     }
 
-    public static void main(String[] args) {
-        getLevel();
+    public static void getLevel(int level){
+        int[][] sleutelArray = sleutels(level);
+        Sleutel.setLocatie(sleutelArray);
+        int[][] barricadeArray = barricades(level);
+        Barricade.setLocatie(barricadeArray);
+        int[][] murenArray = muren(level);
+        Muur.setLocatie(murenArray);
+        int[] spelerArray = speler(level);
+        Speler.setLocatie(spelerArray);
+        int[] eindveldArray = eindveld(level);
+        Eindveld.setLocatie(eindveldArray);
+        Speelveld.setLevel(level);
+        System.out.println("Klaar met laden level");
     }
 }

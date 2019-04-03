@@ -14,6 +14,7 @@ public class Speler {
 
     private int positieX;
     private int positieY;
+    private static int[] locatie = {0,0};
 
     private String naam; //nieuwe instance
     private int inventory;
@@ -35,6 +36,14 @@ public class Speler {
 
     public Speler() { //nieuwe Constructor
 
+    }
+
+    public static int[] getLocatie() {
+        return locatie;
+    }
+
+    public static void setLocatie(int[] loc) {
+        locatie = loc;
     }
 
     public String getNaam() { return naam; }
