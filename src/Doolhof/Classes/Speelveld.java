@@ -75,7 +75,12 @@ public class Speelveld {
                 }
             }
         }
-        levels.getLevel();
+        if(level == -1){
+            levels.getLevel();
+        }
+        else {
+            levels.getLevel(level);
+        }
         initializeSpeler(panel);
         initializeBarricades();
         initializeSleutels();
