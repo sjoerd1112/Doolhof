@@ -50,8 +50,8 @@ public class levels {
     }
 
     public static void getLevel(){
-        int[] levelId = {1};
-        int randomInt = (int) Math.random()*(levelId.length-1);
+        int[] levelId = {1,2};
+        int randomInt = (int) (Math.random()*levelId.length);
         int[][] sleutelArray = sleutels(randomInt);
         Sleutel.setLocatie(sleutelArray);
         int[][] barricadeArray = barricades(randomInt);
