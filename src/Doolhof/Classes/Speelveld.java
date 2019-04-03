@@ -23,7 +23,7 @@ public class Speelveld {
 
 
     public Speelveld(JPanel panel) { //nieuwe constructor
-        startDoolHof(panel, 1);
+        startDoolHof(panel, -1);
     }
 
     public Speelveld() { //nieuwe instance
