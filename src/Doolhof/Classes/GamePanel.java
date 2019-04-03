@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class GamePanel {
 
@@ -22,7 +24,8 @@ public class GamePanel {
         nieuwSpel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nieuwSpel();
+                //nieuwSpel();
+                Speelveld.nieuwSpel(-1);
             }
         });
         panel.add(nieuwSpel);
@@ -43,7 +46,9 @@ public class GamePanel {
     }
 
     public void nieuwSpel()    {
-        levels.getLevel();
+        Speelveld.startDoolHof(main.getPanel(),-1);
+        ArrayList<Vlak> vlakken = Speelveld.getVlakken();
+        System.out.println(vlakken.get(100));
     }
 
     public void opnieuwStarten()    {

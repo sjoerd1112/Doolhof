@@ -34,4 +34,8 @@ public class main {
     public static JPanel getPanel() { //nieuwe methode
         return panel;
     }
+
+    public static void clearPanel(){
+        panel.removeAll();
+    }
 }

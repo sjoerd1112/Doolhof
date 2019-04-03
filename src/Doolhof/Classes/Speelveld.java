@@ -34,6 +34,13 @@ public class Speelveld {
         startDoolHof(main.getPanel(), level);
     }
 
+    public static void nieuwSpel(int level){
+        vlakken.clear();
+        main.clearPanel();
+        startDoolHof(main.getPanel(),level);
+        new GamePanel(main.getPanel());
+    }
+
     public static int getLevel() {
         return level;
     }
@@ -54,7 +61,7 @@ public class Speelveld {
         panel.repaint();
     }
 
-    public ArrayList<Vlak> getVlakken() {
+    public static ArrayList<Vlak> getVlakken() {
         return vlakken;
     }
 
