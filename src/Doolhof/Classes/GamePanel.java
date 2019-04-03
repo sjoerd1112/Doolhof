@@ -19,7 +19,7 @@ public class GamePanel {
         });
         panel.add(restart);
         JButton nieuwSpel = new JButton("<html>" + "Nieuw" + "<br>" + "spel" + "</html>");
-        restart.addActionListener(new ActionListener() {
+        nieuwSpel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 nieuwSpel();
