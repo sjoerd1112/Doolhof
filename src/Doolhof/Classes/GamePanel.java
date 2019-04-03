@@ -43,10 +43,10 @@ public class GamePanel {
     }
 
     public void nieuwSpel()    {
-        System.out.println("Start een nieuw spel");
+        levels.getLevel();
     }
 
     public void opnieuwStarten()    {
-        System.out.println("Restart");
+        levels.getLevel(Speelveld.getLevel());
     }
 }
