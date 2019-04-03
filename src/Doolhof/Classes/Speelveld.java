@@ -2,8 +2,6 @@ package Doolhof.Classes;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -11,28 +9,45 @@ import java.util.ArrayList;
  */
 public class Speelveld {
 
-    private int level;
+    private static int level;
 
     private final static ArrayList<JLabel> labels = new ArrayList<>(100);
     private final static ArrayList<Vlak> vlakken = new ArrayList<>(100);
 
-    private Sleutel sleutel = new Sleutel(); //nieuwe instance
-    private Barricade barricade = new Barricade(); //nieuwe instance
-    private Muur muur = new Muur(); //nieuwe instance
-    private Eindveld eindveld = new Eindveld(); //nieuwe instance
-    private leegVlak leegvlak = new leegVlak(); //nieuwe instance
-    private Speler speler; //nieuwe instance
+    private static Sleutel sleutel = new Sleutel(); //nieuwe instance
+    private static Barricade barricade = new Barricade(); //nieuwe instance
+    private static Muur muur = new Muur(); //nieuwe instance
+    private static Eindveld eindveld = new Eindveld(); //nieuwe instance
+    private static leegVlak leegvlak = new leegVlak(); //nieuwe instance
+    private static Speler speler; //nieuwe instance
 
 
     public Speelveld(JPanel panel) { //nieuwe constructor
         startDoolHof(panel, 1);
     }
 
-    public Speelveld() { //nieuwe instanc {
+    public Speelveld() { //nieuwe instance
+
     }
 
-    public void setVlak(int index, Vlak vlak) { //nieuwe methode
+    public static void startOpnieuw(int level) {
+        startDoolHof(main.getPanel(), level);
+    }
+
+    public static int getLevel() {
+        return level;
+    }
+
+    public static void setVlak(int index, Vlak vlak) { //nieuwe methode
         vlakken.set(index, vlak);
+    }
+
+    public void setLabel(JPanel panel, int index_van, int index_naar, JLabel van, JLabel naar) {
+        labels.set(index_van, van);
+        labels.set(index_naar, naar);
+
+        panel.revalidate();
+        panel.repaint();
     }
 
     public ArrayList<Vlak> getVlakken() {
@@ -41,7 +56,7 @@ public class Speelveld {
 
     public ArrayList getLabels() { return labels; }
 
-    public void startDoolHof(JPanel panel, int level) { //nieuwe methode
+    public static void startDoolHof(JPanel panel, int level) { //nieuwe methode
         Vlak vlak;
 
         for (int y = 0; y < 10; y++) {
@@ -56,6 +71,7 @@ public class Speelveld {
                 }
             }
         }
+        levels.getLevel();
         initializeSpeler(panel);
         initializeBarricades();
         initializeSleutels();
@@ -65,14 +81,14 @@ public class Speelveld {
         System.out.println("Vlakken size: " + vlakken.size());
     }
 
-    private void initializeSpeler(JPanel panel) { //nieuwe methode
+    private static void initializeSpeler(JPanel panel) { //nieuwe methode
         speler = new Speler(vlakken.get(0).getPoint(), "Speler"); //0 = start positie, correcte code --> Associatie met Speelveld.
         setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //leegVlak, want speler 'staat' op leegVlak
         //Speler is GEEN statisch object van het superklasse Vlak.
         //setVlak(0, new leegVlak(vlakken.get(0).getPoint(), "Speler")); //tijdelijk gebruikt voor test doeleinden
     }
 
-    private void initializeBarricades() { //nieuwe methode
+    private static void initializeBarricades() { //nieuwe methode
         int index;
 
         for (int i = 0; i < barricade.getLocatie().length; i++) {
@@ -83,7 +99,7 @@ public class Speelveld {
         }
     }
 
-    private void initializeSleutels() { //nieuwe methode
+    private static void initializeSleutels() { //nieuwe methode
         int index;
 
         for (int i = 0; i < sleutel.getLocatie().length; i++) {
@@ -94,7 +110,7 @@ public class Speelveld {
         }
     }
 
-    private void initializeMuren() { //nieuwe methode
+    private static void initializeMuren() { //nieuwe methode
         int index;
 
         for (int i = 0; i < muur.getLocatie().length; i++) {
@@ -103,11 +119,11 @@ public class Speelveld {
         }
     }
 
-    private void initializeEindVeld() { //nieuwe methode
+    private static void initializeEindVeld() { //nieuwe methode
         setVlak(99, new Eindveld(vlakken.get(99).getPoint(), "EindVeld"));
     }
 
-    private void loadImages(JPanel panel) { //nieuwe methode
+    private static void loadImages(JPanel panel) { //nieuwe methode
         int index_barricade = 0;
         int index_sleutel = 0;
         JLabel label;
@@ -119,7 +135,6 @@ public class Speelveld {
                     label = new JLabel(leegvlak.getIcon());
                     panel.add(label);
                     labels.add(i, label);
-                    System.out.println("Index LeegVlak: " + i);
                     break;
                 case "Speler":
                     label = new JLabel(speler.getIcon());

@@ -30,12 +30,14 @@ public class Speler {
         positieX = (int) point.getX();
         positieY = (int) point.getY();
         this.naam = naam;
-        System.out.println(naam);
+        System.out.println("Test " + naam);
     }
 
     public Speler() { //nieuwe Constructor
 
     }
+
+    public String getNaam() { return naam; }
 
     public int getPositieX() {
         return positieX;
@@ -57,8 +59,6 @@ public class Speler {
         return inventory;
     }
 
-    public int setInventory(int waarde) { return inventory = waarde; }
-
     public ImageIcon getIcon() {
         return icon;
     }
@@ -68,6 +68,7 @@ public class Speler {
             JLabel speler;
             JLabel leegVlak;
             Vlak vlak;
+            String vlakNaam;
 
             int keyCode = event.getKeyCode();
             int x = getPositieX();
@@ -77,101 +78,132 @@ public class Speler {
 
             switch (keyCode) {
                 case 37: //left
-                    vlak = vlakken.get(index - 1);
+                    vlak = vlakken.get((x - 1 + y*10));
+                    vlakNaam = vlak.getNaam();
                     speler = labels.get(index - 1);
-                    if (vlak.getNaam().equals("LeegVlak")) {
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x - 1));
-                        replace(panel, index, index -1, leegVlak, speler);
-                    } else if (vlak.getNaam().equals("Sleutel")) {
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
+                    } else if(vlakNaam.equals("Sleutel")){
                         pakSleutel(index-1);
-                    } else if (vlak.getNaam().equals("EindVeld"))  {
+                    } else if(vlakNaam.equals("EindVeld"))  {
                         setPositieX((x - 1));
-                        replace(panel, index, index -1, leegVlak, speler);
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                         showVictoryPopUp();
-                    } else if (vlak.getNaam().equals("Barricade")) {
-                        if(controleerWaarde((Barricade) vlak)){
+                    } else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory){
                             setPositieX((x - 1));
-                            replace(panel, index, index -1, leegVlak, speler);
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                            speler.setIcon(getIcon()); //veranderd foto
+                            leegVlak.setIcon(leegvlak.getIcon());
+                            speelveld.setLabel(panel, index - 1, index, speler, leegVlak);
                         }
                     }
                     break;
                 case 39: //right
-                    vlak = vlakken.get(index + 1);
+                    vlak = vlakken.get((x + 1 + y*10));
+                    vlakNaam = vlak.getNaam();
                     speler = labels.get(index + 1);
-                    if (vlak.getNaam().equals("LeegVlak")) {
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieX((x + 1));
-                        replace(panel, index, index + 1, leegVlak, speler);
-                    } else if (vlak.getNaam().equals("Sleutel")) {
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
+                    } else if(vlakNaam.equals("Sleutel")){
                         pakSleutel(index+1);
-                    } else if (vlak.getNaam().equals("EindVeld")) {
+                    }else if(vlakNaam.equals("EindVeld"))  {
                         setPositieX((x + 1));
-                        replace(panel, index, index + 1, leegVlak, speler);
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                         showVictoryPopUp();
-                    } else if (vlak.getNaam().equals("Barricade")) {
-                        if (controleerWaarde((Barricade) vlak)) {
+                    }else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory) {
                             setPositieX((x + 1));
-                            replace(panel, index, index + 1, leegVlak, speler);
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                            speler.setIcon(getIcon()); //veranderd foto
+                            leegVlak.setIcon(leegvlak.getIcon());
+                            speelveld.setLabel(panel, index + 1, index, speler, leegVlak);
                         }
                     }
                     break;
                 case 38: //up
-                    vlak = vlakken.get(index - 10);
+                    vlak = vlakken.get(((y - 1)*10 + x));
+                    vlakNaam = vlak.getNaam();
                     speler = labels.get(index - 10);
-                    if (vlak.getNaam().equals("LeegVlak")) {
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y - 1));
-                        replace(panel, index, index - 10, leegVlak, speler);
-                    } else if(vlak.getNaam().equals("Sleutel")) {
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
+                    } else if(vlakNaam.equals("Sleutel")){
                         pakSleutel(index-10);
-                    } else if(vlak.getNaam().equals("EindVeld")) {
+                    }else if(vlakNaam.equals("EindVeld"))  {
                         setPositieY((y - 1));
-                        replace(panel, index, index - 10, leegVlak, speler);
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon()); //veranderd foto
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                         showVictoryPopUp();
-                    } else if(vlak.getNaam().equals("Barricade")) {
-                        if (controleerWaarde((Barricade) vlak)) {
+                    }else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory) {
                             setPositieY((y - 1));
-                            replace(panel, index, index - 10, leegVlak, speler);
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                            speler.setIcon(getIcon()); //veranderd foto
+                            leegVlak.setIcon(leegvlak.getIcon());
+                            speelveld.setLabel(panel, index - 10, index, speler, leegVlak);
                         }
                     }
                     break;
                 case 40: //down
-                    vlak = vlakken.get(index + 10);
+                    vlak = vlakken.get(((y + 1)*10 + x));
+                    vlakNaam = vlak.getNaam();
                     speler = labels.get(index + 10);
-                    if (vlak.getNaam().equals("LeegVlak")) {
+                    if (vlakNaam.equals("LeegVlak")) {
                         setPositieY((y + 1));
-                        replace(panel, index, index + 10, leegVlak, speler);
-                    } else if (vlak.getNaam().equals("Sleutel")) {
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon());
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
+                    } else if(vlakNaam.equals("Sleutel")){
                         pakSleutel(index+10);
-                    } else if (vlak.getNaam().equals("EindVeld"))  {
+                    }else if(vlakNaam.equals("EindVeld"))  {
                         setPositieY((y + 1));
-                        replace(panel, index, index + 10, leegVlak, speler);
+                        speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                        speler.setIcon(getIcon());
+                        leegVlak.setIcon(leegvlak.getIcon());
+                        speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                         showVictoryPopUp();
-                    } else if (vlak.getNaam().equals("Barricade")){
-                        if (controleerWaarde((Barricade) vlak)) {
+                    }else if(vlakNaam.equals("Barricade")){
+                        Barricade barricade = (Barricade) vlak;
+                        if(barricade.getWaarde() == inventory) {
                             setPositieY((y + 1));
-                            replace(panel, index, index + 10, leegVlak, speler);
+                            speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
+                            speler.setIcon(getIcon());
+                            leegVlak.setIcon(leegvlak.getIcon());
+                            speelveld.setLabel(panel, index + 10, index, speler, leegVlak);
                         }
                     }
                     break;
             }
+            System.out.println("Positie x: " + getPositieX());
+            System.out.println("Positie y: " + getPositieY());
+            System.out.println();
+        } else {
+            System.out.println("Movement negative");
         }
-    }
-
-    public boolean controleerWaarde(Barricade barricade) {
-        if (barricade.getWaarde() == inventory) {
-            return true;
-        }
-        return false;
-    }
-
-    private void replace(JPanel panel, int index_van, int index_naar, JLabel empty_vlak, JLabel speler){
-        speelveld.setVlak(index_van, new leegVlak(vlakken.get(index_van).getPoint(), "LeegVlak"));
-        empty_vlak.setIcon(leegvlak.getIcon());
-        speler.setIcon(getIcon());
-
-        labels.set(index_van, empty_vlak);
-        labels.set(index_naar, speler);
-        panel.revalidate();
-        panel.repaint();
     }
 
     public boolean validMovement(KeyEvent event) { //nieuwe methode (werkt naar behoren)
@@ -216,15 +248,17 @@ public class Speler {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.getRootFrame().dispose();
+                Vlak naar = speelveld.getVlakken().get(index);
 
-                Sleutel sleutel = (Sleutel) speelveld.getVlakken().get(index);
-                setInventory(sleutel.getWaarde());
-                GamePanel.setSleutelText(sleutel.getIcon(sleutel.getWaarde()));
-
+                if(naar.getNaam().equals("Sleutel")){
+                    Sleutel sleutel = (Sleutel) speelveld.getVlakken().get(index);
+                    inventory = sleutel.getWaarde();
+                    GamePanel.setSleutelText(sleutel.getIcon(sleutel.getWaarde()));
+                    System.out.println(getInventory());
+                }
                 speelveld.setVlak(index, new leegVlak(vlakken.get(index).getPoint(), "LeegVlak"));
                 JLabel leegVlak = labels.get(index);
                 leegVlak.setIcon(leegvlak.getIcon());
-                labels.set(index, leegVlak);
             }
         });
 

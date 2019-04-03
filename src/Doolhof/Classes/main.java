@@ -8,11 +8,12 @@ import java.awt.*;
 public class main {
 
     private static JPanel panel; //nieuwe instance
+    private static KeyListener listener;
 
     public static void main (String[] args) { //nieuwe methode
         JFrame frame = new JFrame("Doolhof");
         panel = new JPanel(new GridLayout(11, 10));
-        KeyListener listener = new MyKeyListener();
+        listener = new MyKeyListener();
 
 
         new Speelveld(panel);
@@ -33,5 +34,4 @@ public class main {
     public static JPanel getPanel() { //nieuwe methode
         return panel;
     }
-
 }
