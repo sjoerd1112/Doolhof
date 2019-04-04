@@ -257,6 +257,7 @@ public class Speler {
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                Speelveld.nieuwSpel(-1);
                 JOptionPane.getRootFrame().dispose();
             }
         });
@@ -264,7 +265,7 @@ public class Speler {
         options[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Speelveld.nieuwSpel(-1);
+                Speelveld.startOpnieuw(Speelveld.getLevel());
                 JOptionPane.getRootFrame().dispose();
             }
         });
