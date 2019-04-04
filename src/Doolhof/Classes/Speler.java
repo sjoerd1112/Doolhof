@@ -12,26 +12,23 @@ import java.util.ArrayList;
  */
 public class Speler {
 
-    private static int[] locatie = {0,0};
-
-    private String naam; //nieuwe instance
+    private static int[] locatie;
+    private String naam;
     private int inventory;
-
-    private Speelveld speelveld = new Speelveld(); //nieuwe constructor
-    private ArrayList<Vlak> vlakken = speelveld.getVlakken(); //nieuwe instance
+    private Speelveld speelveld = new Speelveld();
+    private ArrayList<Vlak> vlakken = speelveld.getVlakken();
     private ArrayList<JLabel> labels = speelveld.getLabels();
     private JPanel panel = main.getPanel();
-    private leegVlak leegvlak = new leegVlak(); //nieuwe instance
+    private leegVlak leegvlak = new leegVlak();
+    private ImageIcon icon = new ImageIcon(("speler neutraal.jpg"));
 
-    private ImageIcon icon = new ImageIcon(("speler neutraal.jpg")); //nieuwe instance
-
-    public Speler(Point point, String naam) { //nieuwe paramwter String naam
+    public Speler(Point point, String naam) {
         locatie[0] = (int) point.getX();
         locatie[1] = (int) point.getY();
         this.naam = naam;
     }
 
-    public Speler() { //nieuwe Constructor
+    public Speler() {
 
     }
 
@@ -63,7 +60,9 @@ public class Speler {
         return inventory;
     }
 
-    public int setInventory(int waarde) { return inventory = waarde; }
+    public int setInventory(int waarde) {
+        return inventory = waarde;
+    }
 
     public ImageIcon getIcon() {
         return icon;
@@ -169,7 +168,7 @@ public class Speler {
         return false;
     }
 
-    private void replace(JPanel panel, int index_van, int index_naar, JLabel empty_vlak, JLabel speler){
+    public void replace(JPanel panel, int index_van, int index_naar, JLabel empty_vlak, JLabel speler){
         speelveld.setVlak(index_van, new leegVlak(vlakken.get(index_van).getPoint(), "LeegVlak"));
         speelveld.setVlak(index_naar, new leegVlak(vlakken.get(index_naar).getPoint(), "Speler"));
 
@@ -182,7 +181,7 @@ public class Speler {
         panel.repaint();
     }
 
-    public boolean validMovement(KeyEvent event) { //nieuwe methode (werkt naar behoren)
+    public boolean validMovement(KeyEvent event) {
         int code = event.getKeyCode();
         int x = getPositieX();
         int y = getPositieY();
@@ -258,6 +257,14 @@ public class Speler {
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                JOptionPane.getRootFrame().dispose();
+            }
+        });
+
+        options[1].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Speelveld.nieuwSpel(-1);
                 JOptionPane.getRootFrame().dispose();
             }
         });
