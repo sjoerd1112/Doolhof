@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
  */
 public class Eindveld extends Vlak{
 
-    private static int[] locatie = {9,9};
+    private static int[] locatie;
 
     private ImageIcon icon = new ImageIcon(("flag.jpg")); //nieuwe instance
 

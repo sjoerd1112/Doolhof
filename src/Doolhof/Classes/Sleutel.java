@@ -9,9 +9,11 @@ import java.awt.*;
  */
 public class Sleutel extends Vlak{
 
-    private static int[][] locatie = {{2, 2, 300}, {6,2,100}, {2,8,300}, {6,4,100}   }; //nieuwe array
+    private static int[][] locatie;
 
-    private ImageIcon icon;
+    private ImageIcon icon100 = new ImageIcon("key_100.png");
+    private ImageIcon icon200 = new ImageIcon("key_200.png");
+    private ImageIcon icon300 = new ImageIcon("key_300.png");
 
     private int waarde;
 
@@ -27,9 +29,6 @@ public class Sleutel extends Vlak{
         locatie = loc;
     }
 
-    private ImageIcon icon100 = new ImageIcon("key_100.png");
-    private ImageIcon icon200 = new ImageIcon("key_200.png");
-    private ImageIcon icon300 = new ImageIcon("key_300.png");
 
     public Sleutel(Point point, String naam) {
         super(point, naam);
@@ -40,7 +39,6 @@ public class Sleutel extends Vlak{
     public int[][] getLocatie() { //nieuwe methode
         return locatie;
     }
-
 
     public ImageIcon getIcon(int waarde) {
         if (waarde == 100) {
